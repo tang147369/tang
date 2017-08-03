@@ -1,0 +1,18 @@
+.sf {
+	margin-left: 10px;
+}
+
+.contents-right {
+	padding-left: 30px;
+	padding-right:30px ;
+	font-family:"黑体";
+}
+.contents-left{
+	width:140px;
+	font-weight: 500;
+	font-family:'黑体';
+}
+.panel-heading span:hover{
+	text-decoration: underline;
+	color:#000000
+}
