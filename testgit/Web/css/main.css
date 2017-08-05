@@ -12,7 +12,8 @@
 	font-weight: 500;
 	font-family:'黑体';
 }
-.panel-heading span:hover{
+.h-span:hover{
 	text-decoration: underline;
-	color:#000000
+	color:#000000;
+	cursor: pointer;
 }
