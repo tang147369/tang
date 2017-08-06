@@ -191,12 +191,14 @@ void BubbleSort1(RecType R[],int n)
 								</div>
 								<div class="col-md-2 ">
 									<br  />
-									<div class="input-group input-group-sm">
-							            <input type="text" class="form-control">
-							            <span class="input-group-btn">
-							            	 <button class="btn btn-info" type="button">生成</button>
-							            </span>
-							        </div>
+									<form action="Time_efficiency" method="post" role="form">
+										<div class="input-group input-group-sm">
+									            <input type="text" name="num" class="form-control">
+									            <span class="input-group-btn">
+									            	<button class="btn btn-info" type="submit">生成</button>
+									            </span>
+								        </div>
+							         </form>
 							        <br/>
 							        <p style="text-align:right;"><button type="button" class="btn btn-info btn-sm hidden">排序</button></p>
 								</div>
