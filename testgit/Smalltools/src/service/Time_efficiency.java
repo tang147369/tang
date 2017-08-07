@@ -48,12 +48,18 @@ public class Time_efficiency extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String num= request.getParameter("num");
-		String regex = "\\d{0,6}";
-		if(num.equals(regex)){
-			out.println(num);
+		String num= request.getParameter("input_num");
+		String regex = "\\d{1,6}";
+		if(num.matches(regex)){
+			int newnum = Integer.parseInt(num);
+			System.out.println("newnum:"+newnum);
+			if(newnum>0 && newnum<=99999){
+				out.print(num);
+			}else{
+				out.print("input_false2");
+			}
 		}else{
-			
+			out.print("input_false1");
 		}
 		out.flush();
 		out.close();

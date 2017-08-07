@@ -191,14 +191,12 @@ void BubbleSort1(RecType R[],int n)
 								</div>
 								<div class="col-md-2 ">
 									<br  />
-									<form action="Time_efficiency" method="post" role="form">
 										<div class="input-group input-group-sm">
-									            <input type="text" name="num" class="form-control">
+									            <input id="input_num" type="text" class="form-control">
 									            <span class="input-group-btn">
-									            	<button class="btn btn-info" type="submit">生成</button>
+									            	<button id="generate" class="btn btn-info" type="submit">生成</button>
 									            </span>
 								        </div>
-							         </form>
 							        <br/>
 							        <p style="text-align:right;"><button type="button" class="btn btn-info btn-sm hidden">排序</button></p>
 								</div>
@@ -221,6 +219,34 @@ void BubbleSort1(RecType R[],int n)
 		</div>
 		<script type="text/javascript" src="js/jquery.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript"> 
+		$(document).ready(function(){
+			$("#generate").click(function(){
+			    $.post("Time_efficiency",
+			    {
+			    	input_num:$("#input_num").val()
+			    },
+			        function(data,status){
+			        alert("数据: \n" + data + "\n状态: " + status);
+			        if(data == "input_false"){
+			        	$("#input_num").addClass("red");
+			        }
+			    });
+			});
+		});
+		$(document).ready(function(){
+			var reg = /^\d+$/;
+			$("#input_num").mouseleave(function(){
+				var num = $("#input_num").val();
+				/* alert(reg.test(num)+" "+num.length); */
+			    if((num<0 || num>99999 || (reg.test(num)==false)) && num.length!=''){
+			    	$("#input_num").addClass("red");
+			    }else{
+			    	$("#input_num").removeClass("red");
+			    }
+			});
+		});
+		</script>
 	</body>
 </html>
 
