@@ -183,11 +183,11 @@ void BubbleSort1(RecType R[],int n)
 						<br/>
 						<div class="tab-pane fade in" id="test">
 							<div class="panel panel-default">
-								<div class="panel-heading">在生成前的输入框输入要生成的随机数的位数，再点击生成按钮即可生成待排序随机数;生成后点击排序即可。</div>
+								<div class="panel-heading">在生成前的输入框输入要生成的随机数的位数（小于100000），再点击生成按钮即可生成待排序随机数;生成后点击排序即可。</div>
 							</div>
 							<div class="row">
 								<div class="col-md-5">
-									<textarea class="form-control" rows="6" readonly="readonly"></textarea>
+									<textarea id="randomNum" class="form-control" rows="6" readonly="readonly"></textarea>
 								</div>
 								<div class="col-md-2 ">
 									<br  />
@@ -198,10 +198,10 @@ void BubbleSort1(RecType R[],int n)
 									            </span>
 								        </div>
 							        <br/>
-							        <p style="text-align:right;"><button type="button" class="btn btn-info btn-sm hidden">排序</button></p>
+							        <p style="text-align:right;"><button type="button" id="orderButton" class="btn btn-info btn-sm orderButton">排序</button></p>
 								</div>
 								<div class="col-md-5">
-									<textarea class="form-control" rows="6" readonly="readonly"></textarea>
+									<textarea id="bubbleSor" class="form-control" rows="6" readonly="readonly"></textarea>
 								</div>
 							</div>
 						</div>
@@ -220,20 +220,31 @@ void BubbleSort1(RecType R[],int n)
 		<script type="text/javascript" src="js/jquery.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript"> 
+		//生成随机数
 		$(document).ready(function(){
 			$("#generate").click(function(){
-			    $.post("Time_efficiency",
-			    {
-			    	input_num:$("#input_num").val()
-			    },
-			        function(data,status){
-			        alert("数据: \n" + data + "\n状态: " + status);
-			        if(data == "input_false"){
-			        	$("#input_num").addClass("red");
-			        }
-			    });
+				var num=$("#input_num").val();
+			    if(num != ""){
+			    	$.post("Time_efficiency",
+				   {
+						 input_num:num
+			       },
+     		       function(data,status){
+			           // alert("数据: \n" + data + "\n状态: " + status); 
+				   	   if(data == "input_false"){
+			           		$("#input_num").addClass("red");
+				       }else{
+						       $("#randomNum").empty();
+						       $("#randomNum").append(data);
+						       if(num!=""){
+						      		$("#orderButton").removeClass("orderButton");
+						       	}
+					   }
+				    });
+			    }
 			});
 		});
+		//监测输入框数据
 		$(document).ready(function(){
 			var reg = /^\d+$/;
 			$("#input_num").mouseleave(function(){
@@ -244,6 +255,21 @@ void BubbleSort1(RecType R[],int n)
 			    }else{
 			    	$("#input_num").removeClass("red");
 			    }
+			});
+		});
+		//排序
+		$(document).ready(function(){
+			$("#orderButton").click(function(){
+				$.post("Time_efficiency",
+			{
+					input_num:$("#input_num").val(),
+				order:"order"
+			},
+					function(data,status){
+					//alert("数据: \n" + data + "\n状态: " + status); 
+		        	$("#bubbleSor").empty();
+		        	$("#bubbleSor").append(data);
+				});
 			});
 		});
 		</script>

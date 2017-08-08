@@ -20,3 +20,6 @@
 .red{
 	border-color:red;
 }
+.orderButton{
+	display:none;
+}
