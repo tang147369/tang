@@ -183,7 +183,7 @@ void BubbleSort1(RecType R[],int n)
 						<br/>
 						<div class="tab-pane fade in" id="test">
 							<div class="panel panel-default">
-								<div class="panel-heading">在生成前的输入框输入要生成的随机数的位数（小于100000），再点击生成按钮即可生成待排序随机数;生成后点击排序即可。</div>
+								<div class="panel-heading">在"生成"按钮前的输入框输入要生成的随机数的位数（小于100000），再点击生成按钮即可生成待排序随机数;生成后点击排序即可。</div>
 							</div>
 							<div class="row">
 								<div class="col-md-5">
@@ -199,6 +199,7 @@ void BubbleSort1(RecType R[],int n)
 								        </div>
 							        <br/>
 							        <p style="text-align:right;"><button type="button" id="orderButton" class="btn btn-info btn-sm orderButton">排序</button></p>
+									<p id="time" style="text-align:center;"></p>
 								</div>
 								<div class="col-md-5">
 									<textarea id="bubbleSor" class="form-control" rows="6" readonly="readonly"></textarea>
@@ -226,6 +227,8 @@ void BubbleSort1(RecType R[],int n)
 				var num=$("#input_num").val();
 			    if(num != ""){
 			    	$.post("Time_efficiency",
+			    			
+			    			
 				   {
 						 input_num:num
 			       },
@@ -234,23 +237,30 @@ void BubbleSort1(RecType R[],int n)
 				   	   if(data == "input_false"){
 			           		$("#input_num").addClass("red");
 				       }else{
-						       $("#randomNum").empty();
-						       $("#randomNum").append(data);
+						       $("#randomNum").text(data);
 						       if(num!=""){
+						    	   //如果服务端返回了数据并且输入框不为空则设置排序按钮出现，并隐藏之前排序时间
 						      		$("#orderButton").removeClass("orderButton");
+						      		$("#time").text("");
+						      		$("#bubbleSor").text("");
 						       	}
 					   }
 				    });
+			    }else{
+			    	 $("#randomNum").text("");
+			    	 $("#time").text("");
+			    	 $("#orderButton").addClass("orderButton");
+			    	 $("#bubbleSor").text("");
 			    }
 			});
 		});
-		//监测输入框数据
+		//监测输入框数据，输入数据不符合要求的话输入框产生相应变化
 		$(document).ready(function(){
 			var reg = /^\d+$/;
 			$("#input_num").mouseleave(function(){
 				var num = $("#input_num").val();
 				/* alert(reg.test(num)+" "+num.length); */
-			    if((num<0 || num>99999 || (reg.test(num)==false)) && num.length!=''){
+			    if((num<=0 || num>99999 || (reg.test(num)==false)) && num.length!=''){
 			    	$("#input_num").addClass("red");
 			    }else{
 			    	$("#input_num").removeClass("red");
@@ -260,15 +270,21 @@ void BubbleSort1(RecType R[],int n)
 		//排序
 		$(document).ready(function(){
 			$("#orderButton").click(function(){
+				//若还未从服务器返回排序结果则提示
+				$("#time").html("<span style='color:red;'>排序中，请稍等...</span>");
+				//点击排序后隐藏排序按钮
+				$("#orderButton").addClass("orderButton");
 				$.post("Time_efficiency",
 			{
 					input_num:$("#input_num").val(),
-				order:"order"
+					order:"order"
 			},
 					function(data,status){
+				   //将从服务器返回数据以‘,’分割为排序结果和排序时间
+				    var datasplit = data.split(",");
 					//alert("数据: \n" + data + "\n状态: " + status); 
-		        	$("#bubbleSor").empty();
-		        	$("#bubbleSor").append(data);
+		        	$("#bubbleSor").text(datasplit[0]);//排序结果
+		        	$("#time").text(datasplit[1]);//排序时间
 				});
 			});
 		});
