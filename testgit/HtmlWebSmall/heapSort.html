@@ -4,7 +4,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>冒泡排序</title>
+		<title>堆排序</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="js/main.js" ></script>
@@ -63,7 +63,7 @@
 					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
 							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a2"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
 							<div id="a2" class="collapse">
-								<a href="#" class="list-group-item"><span class="sf">冒泡排序</span></a>
+								<a href="bubbleSort.html" class="list-group-item"><span class="sf">冒泡排序</span></a>
 						   	    <a href="quickSort.html" class="list-group-item"><span class="sf">快速排序</span></a>
 							</div>
 						</div>
@@ -71,7 +71,7 @@
 							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a3"><span class="glyphicon glyphicon-plus"></span><span class="sf">选择排序</span></a>
 							<div id="a3" class="collapse">
 								<a href="selectSort.html" class="list-group-item"><span class="sf">直接选择排序</span></a>
-						   	    <a href="heapSort.html" class="list-group-item"><span class="sf">堆排序</span></a>
+						   	    <a href="#" class="list-group-item"><span class="sf">堆排序</span></a>
 							</div>
 						</div>
 						<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
@@ -82,7 +82,7 @@
 				<div class="contents-right col-sm-10 col-md-10">
 					<ul id="myTab" class="nav nav-tabs">
 						<li class="active">
-							<a style="color: black;" href="#bubbleSort" data-toggle="tab">冒泡排序</a>
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">堆排序</a>
 						</li>
 						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
 						<li class="visible-xs dropdown">
@@ -101,7 +101,7 @@
 						            <li role="presentation" class="divider"></li>
 						            <li class="dropdown-header">选择排序</li>
 						            <li><a role="menuitem" tabindex="-1" href="selectSort.html">直接选择排序</a></li>
-						            <li><a role="menuitem" tabindex="-1" href="heapSort.html">堆排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">堆排序</a></li>
 						            <li role="presentation" class="divider"></li>
 						            <li><a role="menuitem" tabindex="-1" href="#">归并排序</a></li>
 						            <li role="presentation" class="divider"></li>
@@ -114,91 +114,90 @@
 						<!--排序算法说明标签页-->
 						<div class="tab-pane fade in active" id="bubbleSort">
 							<div class="panel panel-default">
-								<div class="panel-heading"><h4>冒泡排序</h4></div>
+							    <div class="panel-heading"><h4>堆排序</h4></div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">1.排序思路</div>
 								<div class="panel-body">
-									<P>&nbsp;&nbsp;&nbsp;&nbsp;冒泡排序也称为气泡排序，是一种典型的交换排序方法，其基本思想是：通过无序区中相邻元素间关键字的比较和位置的交换，使关键字最小的
-									元素如气泡一般逐渐往上"漂浮"，直至水面，整个算法是从最下面的元素开始，对每两个相邻的关键字进行比较，且使关键字较小的元素换至关键字
-									较大的元素之上，使得经过一趟冒泡排序后，关键字最小的元素到达最上端；接着，再在剩下的元素中找关键字次小的元素，并把它换到第二个位置上。
-									依次类推，一直到所有元素都有序为止。</P>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;堆排序是一种树形选择排序方法，它的特点是，在排序过程中，将R[1..n]看成是一颗完全二叉树的顺序存储结构
+										，利用完全二叉树中双亲节点和孩子节点之间的内在关系，在当前无序区中选择关键字最大（或最小）的元素。<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;堆的定义是：n个关键字序列K<sub>1</sub>,K<sub>2</sub>,...,K<sub>n</sub>称为堆，当且
+										仅当该序列满足如下性质（简称为堆性质）；<br/>
+										&nbsp;&nbsp;&nbsp;&nbsp;(1)K<sub>i</sub>&lt;=K<sub>2i</sub>且K<sub>i</sub>&lt;=K<sub>2i+1</sub>
+										<br />&nbsp;&nbsp;&nbsp;&nbsp;或<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;(2)K<sub>i</sub>&gt;=K<sub>2i</sub>且K<sub>i</sub>&gt;=K<sub>2i+1</sub>(i&lt;=i&lt;=&lceil;n/2&rceil;)<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;满足第(1)种情况的堆称为小根堆，满足第(2)种情况的堆称为大根堆。下面讨论的堆是大根堆。
+										<br />&nbsp;&nbsp;&nbsp;&nbsp;堆排序的排序过程与直接选择排序类似，只是挑选最大或最小元素的不同，这里采用大根堆
+										每次挑选最大元素归位。挑选最大元素的方法是将数组中储存的数据看成是一颗完全二叉树，利用完全二叉树中双亲节点和孩子节点之间
+										的内在关系来选择关键字最大元素。具体做法是：把待排序的表的关键字存放在数组R[1..n](注意，为了与二叉树的顺序存储一致，堆排序的数据序列的
+										下标从1开始)之中，将R看做一颗二叉树，每个节点表示一个元素，源表的第一个元素R[1]作为二叉树的根，以下各元素R[2..n]依次逐层从左到右顺序排列
+										，构成一颗完全二叉树，节点R[i]的左孩子是R[2i]，右孩子是R[2i+1]，双亲是R[i/2];
+										
+									</p>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">2.排序算法</div>
 							</div>
 							<div>
-					<p>冒泡排序的算法如下：</p>
-<pre>void BubbleSort(RecType R[],int n)
+								<p>
+									&nbsp;&nbsp;&nbsp;&nbsp;堆排序的关键是构造初始堆，这里采用筛选算法建堆：假设完全二叉树的某一个节点i，它的左子树、右子树已是堆，接下来需要将
+									R[2i].key与R[2i+1].key之中最大者与R[i].key比较，若R[i].key较小则将其与最大孩子的关键字交换，这可能破环下一级的堆，
+									于是继续采用上述方法构造下一级的堆，直到完全二叉树中节点i构成堆为止。对于任意一颗完全二叉树，i取&lfloor;n/2&rfloor;~1，
+									反复利用上述方法建堆。大者“上浮"，小者被“筛选”下去。调整堆的算法sift()如下：
+								</p>
+<pre>void sift(RecType R[],int low,int high)	  
 {
-  int i,j;
-  RecType tmp;
-  for(i=0;i&lt;n-1;i++)
+  int i=low,j=2*i;	  //R[j]是R[i]的左孩子
+  RecType tmp=R[i];
+  while(j&lt;=high)
   {
-    for(j=n-1;j&gt;i;j--)		//比较，找出本躺关键字最小的元素
-    if(R[j].key&lt;R[j-1].key)
-    {
-      tmp=R[j];			//R[j]与R[j-1]进行交换，将关键字最小的元素前移
-      R[j]=R[j-1];
-      R[j-1]=tmp;
-    }
+    if(j&lt;high && R[j].key&lt;R[j+1].key)//若右孩子较大，把j指向右孩子
+	  j++;
+	if(tmp.key&lt;R[j].key)
+	{
+	  R[i]=R[j];	  //将R[j]调整到双亲节点的位置
+	  i=j;	  //修改i和j的值，以便继续向下筛选
+	  j=2*i;
+	}	  //筛选结束
+	else break;
   }
+  R[i]=tmp;	  //被筛选节点的值放入最终位置
 }
-</pre>
+
+								</pre>
+								<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;在初始堆构造好后，根节点一定是最大关键字节点，将其放到序列的最后，也就是与最后一个叶子结点交换。
+								由于最大元素已归位，待排序的元素个数减少一个，但由于根节点的改变，这n-1个节点不一定为堆，调用一次sift算法将这n-1个节点调整成堆
+								，其根节点为次大的元素，将它放到序列的倒数第二个位置，即将堆中根与最后一个叶子交换，待排序的元素个数变为n-2个，再调整，再将
+								根节点归位，如此反复操作，直到完全二叉树只剩一个根为止。实现堆排序的算法如下：
+								</p>
+<pre>void HeapSort(RecType R[],int n)	  
+{
+  int i;
+  RecType tmp;
+  for(i=n/2;i&gt;=1;i--)	  //循环建立初始堆
+    sift(R,i,n);
+  for(i=n;i&gt;=2;i--)	  //进行n-1躺堆排序，每一趟堆排序的元素个数减1
+  {
+    tmp=R[i];	  //将最后一个元素同当前区内R[1]对换
+    R[1]=R[i];
+    R[i]=tmp;
+    sift(R,1,i-1);	  //筛选R[1]节点，得到i-1个节点的堆
+  }
+}								
 							</div>
 							<div>
-								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{9，8，7，6，5，4，3，2，1，0}。说明采用冒泡排序法进行排序的过程？	
-								<span class="h-span"  data-toggle="collapse" data-target="#pspan"><b>查看解析</b></span></p>
-								<!--例题解析-->
-								<div class="panel panel-default collapse" id="pspan" style="background: rgb(245,245,245);">
+								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{6，8，7，9，0，1，3，2，4，5}.说明采用堆3排序方法进行的过程。<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
+								<div class="panel panel-default collapse" id="insertSt" style="background: rgb(245,245,245);">
 									<div class="panel-body">
-										<P>解：其排序过程如下所示。每次从无序区中冒出一个关键字最小的元素（用红色表示）并将其定位。</P>
-										<ul class="list-unstyled">
-											<li>初始关键字 9 8 7 6 5 4 3 2 1 0</li>       
-											<li>i=0 <span style="color: red;">0</span> 9 8 7 6 5 4 3 2 1</li>      
-										    <li>i=1 0 <span style="color: red;">1</span> 9 8 7 6 5 4 3 2</li> 
-									        <li>i=2 0 1 <span style="color: red;">2</span> 9 8 7 6 5 4 3</li> 
-									        <li>i=3 0 1 2 <span style="color: red;">3</span> 9 8 7 6 5 4</li> 
-										    <li>i=4 0 1 2 3 <span style="color: red;">4</span> 9 8 7 6 5</li> 
-										    <li>i=5 0 1 2 3 4 <span style="color: red;">5</span> 9 8 7 6</li>
-										    <li>i=6 0 1 2 3 4 5 <span style="color: red;">6</span> 9 8 7</li>
-										    <li>i=7 0 1 2 3 4 5 6 <span style="color: red;">7</span> 9 8</li>
-										    <li>i=8 0 1 2 3 4 5 6 7 <span style="color: red;">8</span> 9</li>
-										</ul>
+										<P>解：其初始状态如图10.11(a)所示，通过第一个for循环调用sift()产生的初始堆如图10.11(b)所示，这时R中关键字序列为{9,8,7,6,5,1,3,2,4,0}。堆排序过程如图10.12所示，每输出一个元素，就对堆进行一次筛选调整</P>									
 									</div>
 								</div>
-							</div>	
-							<!--追加内容-->
-							<div>								
-								<P><b>补充：</b>在有些情况下，在第i(i&lt;n-1)趟就已经排好序了，但算法仍执行后面几趟的比较。
-								      实际上，一旦算法中某一趟比较时没有出现任何元素交换，说明已排好序了，就可以结束本算法。
-								   为此，改进冒泡排序算法如下：
-								</P>
-								<pre>
-void BubbleSort1(RecType R[],int n)
-{
-  int i,j;
-  bool exchange;
-  RecType tmp;
-  for(i=0;i&lt;n-1;i++)
-  {
-  	exchange=false;
-  	for(j=n-1;j&gt;i;j--)
-  	{
-  	  if(R[j].key&lt;R[j-1].key)
-  	  {
-  	  	tmp=R[j];
-  	  	R[j]=R[j-1];
-  	  	exchange=true;
-  	  }
-  	  if(!exchange)
-  	    return;
-  	}
-  }
-}</pre>
 							</div>
 						</div>
+						<!--时间效率测试标签页-->
+						
 					</div>
 				</div>
 			</div>
@@ -216,3 +215,5 @@ void BubbleSort1(RecType R[],int n)
 	</body>
 </html>
 
+
+</html>

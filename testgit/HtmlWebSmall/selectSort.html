@@ -4,7 +4,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>冒泡排序</title>
+		<title>直接选择排序</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="js/main.js" ></script>
@@ -63,7 +63,7 @@
 					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
 							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a2"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
 							<div id="a2" class="collapse">
-								<a href="#" class="list-group-item"><span class="sf">冒泡排序</span></a>
+								<a href="bubbleSort.html" class="list-group-item"><span class="sf">冒泡排序</span></a>
 						   	    <a href="quickSort.html" class="list-group-item"><span class="sf">快速排序</span></a>
 							</div>
 						</div>
@@ -82,7 +82,7 @@
 				<div class="contents-right col-sm-10 col-md-10">
 					<ul id="myTab" class="nav nav-tabs">
 						<li class="active">
-							<a style="color: black;" href="#bubbleSort" data-toggle="tab">冒泡排序</a>
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">直接选择排序</a>
 						</li>
 						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
 						<li class="visible-xs dropdown">
@@ -114,91 +114,68 @@
 						<!--排序算法说明标签页-->
 						<div class="tab-pane fade in active" id="bubbleSort">
 							<div class="panel panel-default">
-								<div class="panel-heading"><h4>冒泡排序</h4></div>
+							    <div class="panel-heading"><h4>直接选择排序</h4></div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">1.排序思路</div>
 								<div class="panel-body">
-									<P>&nbsp;&nbsp;&nbsp;&nbsp;冒泡排序也称为气泡排序，是一种典型的交换排序方法，其基本思想是：通过无序区中相邻元素间关键字的比较和位置的交换，使关键字最小的
-									元素如气泡一般逐渐往上"漂浮"，直至水面，整个算法是从最下面的元素开始，对每两个相邻的关键字进行比较，且使关键字较小的元素换至关键字
-									较大的元素之上，使得经过一趟冒泡排序后，关键字最小的元素到达最上端；接着，再在剩下的元素中找关键字次小的元素，并把它换到第二个位置上。
-									依次类推，一直到所有元素都有序为止。</P>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;直接选择排序的基本思想是：第i趟排序开始事，当前有序区和无序区分别为R[0..i-1]
+										和R[i..n-1]（0&lt;=i&lt;n-1），该趟排序是从当前无序区中选出关键字最小的元素R{k}，将它与无序区的第一个元素R[i]
+										交换，使R{0..i}和R[i+1..n-1]分别变为新的有序区和新的无序区。因为每趟排序均使有序区中增加一个元素，且有序区中的
+										元素关键字均不大于无序区中的关键字，即第i趟排序之后，R[0..i]中的所有关键字小于等于R[i+1..n-1]中的所有关键字
+										，所以进行n-1躺排序之后有R[0..n-2]中的所有关键字小于等于R[n-1].key，也就是说，经过n-1趟排序之后，整个表R[0..n-1]递增有序。
+									</p>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">2.排序算法</div>
 							</div>
 							<div>
-					<p>冒泡排序的算法如下：</p>
-<pre>void BubbleSort(RecType R[],int n)
+								<p>直接选择排序算法如下：</p>
+<pre>void InsetSort(RecType R[],int s,int t)	  
 {
-  int i,j;
+  int i,j,k;
   RecType tmp;
-  for(i=0;i&lt;n-1;i++)
+  for(i=0;i&lt;i++)	  //做第i趟排序
   {
-    for(j=n-1;j&gt;i;j--)		//比较，找出本躺关键字最小的元素
-    if(R[j].key&lt;R[j-1].key)
-    {
-      tmp=R[j];			//R[j]与R[j-1]进行交换，将关键字最小的元素前移
-      R[j]=R[j-1];
-      R[j-1]=tmp;
-    }
+    k=i;
+    for(j=i+1;j&lt;n;j++)	  //在当前无序区R[i..n-]中选key最小的R[k] 
+      if(R[j].key&lt;R[k].key)
+        k=j;	  //k记下目前找到的最小关键字所在位置
+	if(k!=i)	  //交换R[i]和R[k]
+	{
+	  tmp=R[i];
+	  R[i]=R[k];
+	  R[k]=tmp;
+	}
   }
 }
-</pre>
+
+								</pre>
 							</div>
 							<div>
-								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{9，8，7，6，5，4，3，2，1，0}。说明采用冒泡排序法进行排序的过程？	
-								<span class="h-span"  data-toggle="collapse" data-target="#pspan"><b>查看解析</b></span></p>
-								<!--例题解析-->
-								<div class="panel panel-default collapse" id="pspan" style="background: rgb(245,245,245);">
+								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{6，8，7，9，0，1，3，2，4，5}.说明采用直接选择排序方法进行的过程。<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
+								<div class="panel panel-default collapse" id="insertSt" style="background: rgb(245,245,245);">
 									<div class="panel-body">
-										<P>解：其排序过程如下所示。每次从无序区中冒出一个关键字最小的元素（用红色表示）并将其定位。</P>
+										<P>解：其排序过程如下所示。每趟选出一个元素（红色表示）</P>
 										<ul class="list-unstyled">
-											<li>初始关键字 9 8 7 6 5 4 3 2 1 0</li>       
-											<li>i=0 <span style="color: red;">0</span> 9 8 7 6 5 4 3 2 1</li>      
-										    <li>i=1 0 <span style="color: red;">1</span> 9 8 7 6 5 4 3 2</li> 
-									        <li>i=2 0 1 <span style="color: red;">2</span> 9 8 7 6 5 4 3</li> 
-									        <li>i=3 0 1 2 <span style="color: red;">3</span> 9 8 7 6 5 4</li> 
-										    <li>i=4 0 1 2 3 <span style="color: red;">4</span> 9 8 7 6 5</li> 
-										    <li>i=5 0 1 2 3 4 <span style="color: red;">5</span> 9 8 7 6</li>
-										    <li>i=6 0 1 2 3 4 5 <span style="color: red;">6</span> 9 8 7</li>
+											<li>初始关键字 6 8 7 9 0 1 3 2 4 5</li>       
+											<li>i=0 <span style="color: red;">0</span> 8 7 9 6 1 3 2 4 5</li>      
+										    <li>i=1 0 <span style="color: red;">1</span> 7 9 6 8 3 2 4 5</li> 
+									        <li>i=2 0 1 <span style="color: red;">2</span> 9 6 8 3 7 4 5</li> 
+									        <li>i=3 0 1 2 <span style="color: red;">3</span> 6 8 9 7 4 5</li> 
+										    <li>i=4 0 1 2 3 <span style="color: red;">4</span> 8 9 7 6 5</li> 
+										    <li>i=5 0 1 2 3 4 <span style="color: red;">5</span> 9 7 6 8</li>
+										    <li>i=6 0 1 2 3 4 5 <span style="color: red;">6</span> 7 9 8</li>
 										    <li>i=7 0 1 2 3 4 5 6 <span style="color: red;">7</span> 9 8</li>
 										    <li>i=8 0 1 2 3 4 5 6 7 <span style="color: red;">8</span> 9</li>
 										</ul>
 									</div>
 								</div>
-							</div>	
-							<!--追加内容-->
-							<div>								
-								<P><b>补充：</b>在有些情况下，在第i(i&lt;n-1)趟就已经排好序了，但算法仍执行后面几趟的比较。
-								      实际上，一旦算法中某一趟比较时没有出现任何元素交换，说明已排好序了，就可以结束本算法。
-								   为此，改进冒泡排序算法如下：
-								</P>
-								<pre>
-void BubbleSort1(RecType R[],int n)
-{
-  int i,j;
-  bool exchange;
-  RecType tmp;
-  for(i=0;i&lt;n-1;i++)
-  {
-  	exchange=false;
-  	for(j=n-1;j&gt;i;j--)
-  	{
-  	  if(R[j].key&lt;R[j-1].key)
-  	  {
-  	  	tmp=R[j];
-  	  	R[j]=R[j-1];
-  	  	exchange=true;
-  	  }
-  	  if(!exchange)
-  	    return;
-  	}
-  }
-}</pre>
 							</div>
 						</div>
+						<!--时间效率测试标签页-->
+						
 					</div>
 				</div>
 			</div>
@@ -216,3 +193,5 @@ void BubbleSort1(RecType R[],int n)
 	</body>
 </html>
 
+
+</html>

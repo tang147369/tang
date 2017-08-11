@@ -4,7 +4,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>冒泡排序</title>
+		<title>折半插入排序</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="js/main.js" ></script>
@@ -56,14 +56,14 @@
 							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion" data-target="#a1"><span class="glyphicon glyphicon-plus"></span><span class="sf">插入排序</span></a>
 						    <div id="a1" class="collapse">
 						    	<a href="insertSort.html" class="list-group-item"><span class="sf">直接插入排序</span></a>
-						   	    <a href="insertSort1.html" class="list-group-item"><span class="sf">折半插入排序</span></a>
+						   	    <a href="#" class="list-group-item"><span class="sf">折半插入排序</span></a>
 						   	    <a href="shellSort.html" class="list-group-item"><span class="sf">希尔排序</span></a>
 						    </div>
 					    </div>
 					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
 							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a2"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
 							<div id="a2" class="collapse">
-								<a href="#" class="list-group-item"><span class="sf">冒泡排序</span></a>
+								<a href="bubbleSort.html" class="list-group-item"><span class="sf">冒泡排序</span></a>
 						   	    <a href="quickSort.html" class="list-group-item"><span class="sf">快速排序</span></a>
 							</div>
 						</div>
@@ -82,7 +82,7 @@
 				<div class="contents-right col-sm-10 col-md-10">
 					<ul id="myTab" class="nav nav-tabs">
 						<li class="active">
-							<a style="color: black;" href="#bubbleSort" data-toggle="tab">冒泡排序</a>
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">折半插入排序</a>
 						</li>
 						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
 						<li class="visible-xs dropdown">
@@ -92,7 +92,7 @@
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 						            <li class="dropdown-header">插入排序</li>
 						            <li><a role="menuitem" tabindex="-1" href="insertSort.html">直接插入排序</a></li>
-						            <li><a role="menuitem" tabindex="-1" href="insertSort1.html">折半插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">折半插入排序</a></li>
 						            <li><a role="menuitem" tabindex="-1" href="shellSort.html">希尔排序</a></li>
 						            <li role="presentation" class="divider"></li>
 						            <li class="dropdown-header">交换排序</li>
@@ -114,91 +114,50 @@
 						<!--排序算法说明标签页-->
 						<div class="tab-pane fade in active" id="bubbleSort">
 							<div class="panel panel-default">
-								<div class="panel-heading"><h4>冒泡排序</h4></div>
+							    <div class="panel-heading"><h4>折半插入排序</h4></div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">1.排序思路</div>
 								<div class="panel-body">
-									<P>&nbsp;&nbsp;&nbsp;&nbsp;冒泡排序也称为气泡排序，是一种典型的交换排序方法，其基本思想是：通过无序区中相邻元素间关键字的比较和位置的交换，使关键字最小的
-									元素如气泡一般逐渐往上"漂浮"，直至水面，整个算法是从最下面的元素开始，对每两个相邻的关键字进行比较，且使关键字较小的元素换至关键字
-									较大的元素之上，使得经过一趟冒泡排序后，关键字最小的元素到达最上端；接着，再在剩下的元素中找关键字次小的元素，并把它换到第二个位置上。
-									依次类推，一直到所有元素都有序为止。</P>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;直接插入排序将无序区中开头元素R[i](i&lt;=i&lt;=n-1)插入到有序区R[0..i-1]中，
+										此时可以采用折半查找方法在R[0..i-1]中找到插入位置，再通过移动元素进行插入。这样的插入排序称为折半插入排序或二分插入排序。<br / >
+										&nbsp;&nbsp;&nbsp;&nbsp;在R[low..high](初始时low=0,high=i-1)中采用折半查找方法查找到插入R[i]的位置为R[high+1]，在将R[high+1..i-1]
+										中元素后移一个位置，并置R[high+1]=R[i]。
+									</p>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">2.排序算法</div>
 							</div>
 							<div>
-					<p>冒泡排序的算法如下：</p>
-<pre>void BubbleSort(RecType R[],int n)
+								<p>折半插入排序算法如下：</p>
+<pre>void InsetSort1(RecType R[],int n)	  //对R[0..n-1]按递增有序进行直接插入排序 
 {
-  int i,j;
+  int i,j,low,high,mid;
   RecType tmp;
-  for(i=0;i&lt;n-1;i++)
+  for(i=1;i&lt;n;i++)
   {
-    for(j=n-1;j&gt;i;j--)		//比较，找出本躺关键字最小的元素
-    if(R[j].key&lt;R[j-1].key)
+    tmp=R[i];	  //将R[i]保存到tmp中
+    low=0;high=i-1;
+    while(low&lt;high)	  //在R[low..high]中折半查找有序插入的位置
     {
-      tmp=R[j];			//R[j]与R[j-1]进行交换，将关键字最小的元素前移
-      R[j]=R[j-1];
-      R[j-1]=tmp;
+      mid=(low+high)/2;	  //取中间位置
+      if(tmp.keey&lt;R[mid].key)
+        high=mid-1;	  //插入点在左半区
+      else
+        low=mid+1;	  //插入点在右半区
     }
+    for(j=i-1;j&gt;=high+1;j--)	  //元素后以
+      R[j+1]=R[j];
+    R[high+1]=tmp;	  //插入
   }
 }
-</pre>
-							</div>
-							<div>
-								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{9，8，7，6，5，4，3，2，1，0}。说明采用冒泡排序法进行排序的过程？	
-								<span class="h-span"  data-toggle="collapse" data-target="#pspan"><b>查看解析</b></span></p>
-								<!--例题解析-->
-								<div class="panel panel-default collapse" id="pspan" style="background: rgb(245,245,245);">
-									<div class="panel-body">
-										<P>解：其排序过程如下所示。每次从无序区中冒出一个关键字最小的元素（用红色表示）并将其定位。</P>
-										<ul class="list-unstyled">
-											<li>初始关键字 9 8 7 6 5 4 3 2 1 0</li>       
-											<li>i=0 <span style="color: red;">0</span> 9 8 7 6 5 4 3 2 1</li>      
-										    <li>i=1 0 <span style="color: red;">1</span> 9 8 7 6 5 4 3 2</li> 
-									        <li>i=2 0 1 <span style="color: red;">2</span> 9 8 7 6 5 4 3</li> 
-									        <li>i=3 0 1 2 <span style="color: red;">3</span> 9 8 7 6 5 4</li> 
-										    <li>i=4 0 1 2 3 <span style="color: red;">4</span> 9 8 7 6 5</li> 
-										    <li>i=5 0 1 2 3 4 <span style="color: red;">5</span> 9 8 7 6</li>
-										    <li>i=6 0 1 2 3 4 5 <span style="color: red;">6</span> 9 8 7</li>
-										    <li>i=7 0 1 2 3 4 5 6 <span style="color: red;">7</span> 9 8</li>
-										    <li>i=8 0 1 2 3 4 5 6 7 <span style="color: red;">8</span> 9</li>
-										</ul>
-									</div>
-								</div>
-							</div>	
-							<!--追加内容-->
-							<div>								
-								<P><b>补充：</b>在有些情况下，在第i(i&lt;n-1)趟就已经排好序了，但算法仍执行后面几趟的比较。
-								      实际上，一旦算法中某一趟比较时没有出现任何元素交换，说明已排好序了，就可以结束本算法。
-								   为此，改进冒泡排序算法如下：
-								</P>
-								<pre>
-void BubbleSort1(RecType R[],int n)
-{
-  int i,j;
-  bool exchange;
-  RecType tmp;
-  for(i=0;i&lt;n-1;i++)
-  {
-  	exchange=false;
-  	for(j=n-1;j&gt;i;j--)
-  	{
-  	  if(R[j].key&lt;R[j-1].key)
-  	  {
-  	  	tmp=R[j];
-  	  	R[j]=R[j-1];
-  	  	exchange=true;
-  	  }
-  	  if(!exchange)
-  	    return;
-  	}
-  }
-}</pre>
+
+								</pre>
 							</div>
 						</div>
+						<!--时间效率测试标签页-->
+						
 					</div>
 				</div>
 			</div>
@@ -216,3 +175,5 @@ void BubbleSort1(RecType R[],int n)
 	</body>
 </html>
 
+
+</html>
