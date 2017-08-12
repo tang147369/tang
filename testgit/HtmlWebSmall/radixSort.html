@@ -4,7 +4,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>时间效率</title>
+		<title>基数排序</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="js/main.js" ></script>
@@ -75,16 +75,16 @@
 							</div>
 						</div>
 						<a href="mergeSort.html" class="list-group-item"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
-						<a href="radixSort.html" class="list-group-item" ><span class="glyphicon glyphicon-ok"></span><span class="sf">基数排序</span></a>
+						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-ok"></span><span class="sf">基数排序</span></a>
 					</div>
 				</div>
 				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
 				<div class="contents-right col-sm-10 col-md-10">
 					<ul id="myTab" class="nav nav-tabs">
-						<li>
-							<a style="color: black;" href="#bubbleSort" data-toggle="tab">说明</a>
+						<li class="active">
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">直基数排序</a>
 						</li>
-						<li class="active"><a style="color: black;" href="#test" data-toggle="tab">时间效率测试</a></li>
+						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
 						<li class="visible-xs dropdown">
 							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
 								排序<span class="caret"></span>
@@ -105,48 +105,112 @@
 						            <li role="presentation" class="divider"></li>
 						            <li><a role="menuitem" tabindex="-1" href="mergeSort.html">归并排序</a></li>
 						            <li role="presentation" class="divider"></li>
-						            <li><a role="menuitem" tabindex="-1" href="radixSort.html">基数排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">基数排序</a></li>
 						    </ul>
 						</li>
-						
 					</ul>
 					<!--标签页-->
 					<div id="myTabContent" class="tab-content">
 						<!--排序算法说明标签页-->
-						<div class="tab-pane fade" id="bubbleSort">
+						<div class="tab-pane fade in active" id="bubbleSort">
 							<div class="panel panel-default">
-								<div class="panel-heading"><h4>说明</h4></div>
+							    <div class="panel-heading"><h4>基数排序</h4></div>
 							</div>
-							
-							
+							<div class="panel panel-default">
+								<div class="panel-heading">1.排序思路</div>
+								<div class="panel-body">
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;其它几种算法均是基于关键字之间的比较来实现的，而基数排序则是通过"分配"和"收集"过程来实现排序的
+										，不需进行关键字间的比较，是一种借助多关键字排序的思想对单关键字排序的方法。<br />
+									   &nbsp;&nbsp;&nbsp;&nbsp;一般的，元素R[i]的关键字R[i].key是由d位数字组成即K<sup>d-1</sup>K<sup>d-2</sup>...K<sup>0</sup>
+									   ，每一位数字表示关键字的一位，其中K<sup>d-1</sup>为最高位，K<sup>0</sup>是最低位，每一位的值都在0&lt;=K<sup>i</sup>&lt;r范围内
+									   ，其中称为基数。例如，对于二进制数r为2，对于十进制数r为10.<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;基数排序有两种：最低位优先（LSD）和最高位优先（MSD）。最低位优先的过程是：先按最低位的值对元素进行排序，在此基础上
+									  再按次低位进行排序，以此类推，由低位向高位，每趟都是根据关键字的一位并在前一趟的基础上对所有元素进行排序，直至最高位。<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;以r为基数最低位优先排序，假设线性表由节点序列a<sub>0</sub>,a<sub>1</sub>,...,a<sub>n-1</sub>构成，每个节点
+									  a<sub>j</sub>的关键字由d元组K<sub>j</sub><sup>d-1</sup>,K<sub>j</sub><sup>d-2</sup>...,K<sub>j</sub><sup>1</sup>,K<sub>j</sub><sup>0</sup>
+									  组成，其中0&lt;=K<sub>j</sub><sup>i</sup>&lt;=r-1(0&lt;=j&lt;n,0&lt;=i&lt;=d-1)，在排序过程中，使用R个队列Q<sub>0</sub>,
+									  Q<sub>1</sub>,...,Q<sub>r-1</sub>，排序过程如下：<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;对i=0,1,...,d-1,依次做一次"分配"和"收集"（其实就是一次稳定的排序过程）。<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;分配：开始时，把Q<sub>0</sub>,Q<sub>1</sub>,...,Q<sub>r-1</sub>各个队列置成空队列，然后依次考察线性表中的每一个节点a<sub>j</sub>
+									  (j=0,1,...,n-1)，如果a<sub>j</sub>的关键字k<sub>j</sub><sup>i</sup>=k，就把a<sub>j</sub>插入到Q<sub>k</sub>队列中。<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;收集：将Q<sub>0</sub>,Q<sub>1</sub>,...,Q<sub>r-1</sub>各个队列中的节点依次首尾相接，得到新的节点序列，从而组成新的线性表。
+									</p>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">2.排序算法</div>
+							</div>
+							<div>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;假设待排序的数据序列存放在以p为首节点指针的单链表中，其中节点类型RecType1的定义如下:</p>
+<pre>typedef struct node
+{
+  char data[MAXD];	//MAXD为最大关键字位数
+  struct node *next;
+}RecType1;
+
+								</pre>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;其中，data域存放关键字，它是一个字符数组，data[0..MAXD-1]依次存放关键字的低位到高位的各数字字符
+								   关键字的实际位数由参数d指定。<br />
+								   &nbsp;&nbsp;&nbsp;&nbsp;如下基数排序算法radix_sord(p,r,d)实现以r为基数的LSD排序方法。其中参数p为存储待排序序列的单链表的指针，r为基数，d为关键字位数。<br />
+								</p>
+<pre>void RadixSort(RecType *&p,int r,int d)
+//实现基数排序:p为待排序序列的单链表指针，r为基数,d为关键字位数
+{
+  RecType *head[MAXR],*tail[MAXR],*t;	  //定义各链队的首尾指针
+  int i,j,k;
+  for(i=0;i&lt;=d-1;i++)	  //从低位到高位循环
+  {
+    for(j=0;j&lt;r;j++)	  //初始化各链队首尾指针
+      head[j]=tail[j]=NULL; 	
+    while(p!null)  	//分配：对于原链表中的每个节点循环
+    {
+      k=->data[i]-'0';	  //找第k个链队
+      if(head[k]==NULL)  	//第k个链队空时，队首队尾指针均指向*p
+      {
+        head[k]=p;
+        tail[k]=p;
+      }
+      else
+      {
+       	tail[k]->next=p;  	//第k个链队非空时，*p入队
+       	tail[k]=p;
+      }
+      p=p->next;	  //取下一个待排序元素
+    }
+    p=NULL;	  //重新用p来收集所有节点
+    for(j=0;j&lt;j++)	  //收集：对于每一个链队循环
+      if(head[j]!=NULL)	  //若第j个链队是第一个非空链队
+      {
+        if(p==NULL)
+        {
+          p=head[j];
+          t=tail[j];
+        }
+        else  	//若第j个链队是第其它非空链队
+        {
+          t->next=head[j];
+          t=tail[j];
+        }
+      }
+    t->next=NULL;	  //最后一个节点的next域置NULL
+    printf("按%s位排序\t",(i==0？"个":"十"));
+    DispLink(p);	 //调用DispLink显示数列
+  }
+}
+</pre>
+							</div>
+							<div>
+								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{75,23,98,44,57,12,29,64,38,82}.说明采用基数排序方法进行的过程。<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
+								<div class="panel panel-default collapse" id="insertSt" style="background: rgb(245,245,245);">
+									<div class="panel-body">
+										<P>解：这里n=10,d=2,r=10,先按个位数进行排序，再按十位数进行排序，排序过程如下。</P>
+										
+									</div>
+								</div>
+							</div>
 						</div>
 						<!--时间效率测试标签页-->
-						<br/>
-						<div class="tab-pane fade in active" id="test">
-							<div class="panel panel-default">
-								<div class="panel-heading">在"生成"按钮前的输入框输入要生成的随机数的位数（小于100000），再点击生成按钮即可生成待排序随机数;生成后点击排序即可。</div>
-							</div>
-							<div class="row">
-								<div class="col-md-5">
-									<textarea id="randomNum" class="form-control" rows="6" readonly="readonly"></textarea>
-								</div>
-								<div class="col-md-2 ">
-									<br  />
-										<div class="input-group input-group-sm">
-									            <input id="input_num" type="text" class="form-control">
-									            <span class="input-group-btn">
-									            	<button id="generate" class="btn btn-info" type="submit">生成</button>
-									            </span>
-								        </div>
-							        <br/>
-							        <p style="text-align:right;"><button type="button" id="orderButton" class="btn btn-info btn-sm orderButton">排序</button></p>
-									<p id="time" style="text-align:center;"></p>
-								</div>
-								<div class="col-md-5">
-									<textarea id="bubbleSor" class="form-control" rows="6" readonly="readonly"></textarea>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -161,75 +225,8 @@
 		</div>
 		<script type="text/javascript" src="js/jquery.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript"> 
-		//生成随机数
-		$(document).ready(function(){
-			$("#generate").click(function(){
-				var num=$("#input_num").val();
-			    if(num != ""){
-			    	$.post("Time_efficiency",
-			    			
-			    			
-				   {
-						 input_num:num
-			       },
-     		       function(data,status){
-			           // alert("数据: \n" + data + "\n状态: " + status); 
-				   	   if(data == "input_false"){
-			           		$("#input_num").addClass("red");
-				       }else{
-						       $("#randomNum").text(data);
-						       if(num!=""){
-						    	   //如果服务端返回了数据并且输入框不为空则设置排序按钮出现，并隐藏之前排序时间
-						      		$("#orderButton").removeClass("orderButton");
-						      		$("#time").text("");
-						      		$("#bubbleSor").text("");
-						       	}
-					   }
-				    });
-			    }else{
-			    	 $("#randomNum").text("");
-			    	 $("#time").text("");
-			    	 $("#orderButton").addClass("orderButton");
-			    	 $("#bubbleSor").text("");
-			    }
-			});
-		});
-		//监测输入框数据，输入数据不符合要求的话输入框产生相应变化
-		$(document).ready(function(){
-			var reg = /^\d+$/;
-			$("#input_num").mouseleave(function(){
-				var num = $("#input_num").val();
-				/* alert(reg.test(num)+" "+num.length); */
-			    if((num<=0 || num>99999 || (reg.test(num)==false)) && num.length!=''){
-			    	$("#input_num").addClass("red");
-			    }else{
-			    	$("#input_num").removeClass("red");
-			    }
-			});
-		});
-		//排序
-		$(document).ready(function(){
-			$("#orderButton").click(function(){
-				//若还未从服务器返回排序结果则提示
-				$("#time").html("<span style='color:red;'>排序中，请稍等...</span>");
-				//点击排序后隐藏排序按钮
-				$("#orderButton").addClass("orderButton");
-				$.post("Time_efficiency",
-			{
-					input_num:$("#input_num").val(),
-					order:"order"
-			},
-					function(data,status){
-				   //将从服务器返回数据以‘,’分割为排序结果和排序时间
-				    var datasplit = data.split(",");
-					//alert("数据: \n" + data + "\n状态: " + status); 
-		        	$("#bubbleSor").text(datasplit[0]);//排序结果
-		        	$("#time").text(datasplit[1]);//排序时间
-				});
-			});
-		});
-		</script>
 	</body>
 </html>
 
+
+</html>
