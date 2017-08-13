@@ -4,10 +4,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>希尔排序</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/main.css" />
-		<script type="text/javascript" src="js/main.js" ></script>
+		<title>归并排序</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
 	</head>
 	<body>
 		<!--导航栏--->
@@ -25,19 +25,19 @@
 					<div class="collapse navbar-collapse" id="collapse-h">
 						<ul class="nav navbar-nav">
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
 									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">
 									<li><a href="insertSort.html">排序算法</a></li>
 									<li class="divider"></li>
-									<li><a href="#">查找算法</a></li>
-									<li class="divider"></li>
+									<li><a href="../search/seqSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
 									<li><a href="#">分治法</a></li>
 									<li class="divider"></li>
 									<li><a href="#">动态规划法</a></li>
 									<li class="divider"></li>
-									<li><a href="#">贪心算法</a></li>
+									<li><a href="#">贪心算法</a></li>-->
 								</ul>
 							</li>
 							<li><a href="#">个人作品</a></li>
@@ -57,7 +57,7 @@
 						    <div id="a1" class="collapse">
 						    	<a href="insertSort.html" class="list-group-item"><span class="sf">直接插入排序</span></a>
 						   	    <a href="insertSort1.html" class="list-group-item"><span class="sf">折半插入排序</span></a>
-						   	    <a href="#" class="list-group-item"><span class="sf">希尔排序</span></a>
+						   	    <a href="shellSort.html" class="list-group-item"><span class="sf">希尔排序</span></a>
 						    </div>
 					    </div>
 					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
@@ -74,7 +74,7 @@
 						   	    <a href="heapSort.html" class="list-group-item"><span class="sf">堆排序</span></a>
 							</div>
 						</div>
-						<a href="mergeSort.html" class="list-group-item"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
+						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
 						<a href="radixSort.html" class="list-group-item"><span class="glyphicon glyphicon-ok"></span><span class="sf">基数排序</span></a>
 					</div>
 				</div>
@@ -82,9 +82,8 @@
 				<div class="contents-right col-sm-10 col-md-10">
 					<ul id="myTab" class="nav nav-tabs">
 						<li class="active">
-							<a style="color: black;" href="#bubbleSort" data-toggle="tab">希尔排序</a>
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">归并排序</a>
 						</li>
-						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
 						<li class="visible-xs dropdown">
 							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
 								排序<span class="caret"></span>
@@ -93,7 +92,7 @@
 						            <li class="dropdown-header">插入排序</li>
 						            <li><a role="menuitem" tabindex="-1" href="insertSort.html">直接插入排序</a></li>
 						            <li><a role="menuitem" tabindex="-1" href="insertSort1.html">折半插入排序</a></li>
-						            <li><a role="menuitem" tabindex="-1" href="#">希尔排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="shellSort.html">希尔排序</a></li>
 						            <li role="presentation" class="divider"></li>
 						            <li class="dropdown-header">交换排序</li>
 						            <li><a role="menuitem" tabindex="-1" href="bubbleSort.html">冒泡排序</a></li>
@@ -103,25 +102,28 @@
 						            <li><a role="menuitem" tabindex="-1" href="selectSort.html">直接选择排序</a></li>
 						            <li><a role="menuitem" tabindex="-1" href="heapSort.html">堆排序</a></li>
 						            <li role="presentation" class="divider"></li>
-						            <li><a role="menuitem" tabindex="-1" href="mergeSort.html">归并排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">归并排序</a></li>
 						            <li role="presentation" class="divider"></li>
 						            <li><a role="menuitem" tabindex="-1" href="radixSort.html">基数排序</a></li>
 						    </ul>
 						</li>
+						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
 					</ul>
 					<!--标签页-->
 					<div id="myTabContent" class="tab-content">
 						<!--排序算法说明标签页-->
 						<div class="tab-pane fade in active" id="bubbleSort">
 							<div class="panel panel-default">
-							    <div class="panel-heading"><h4>希尔排序</h4></div>
+							    <div class="panel-heading"><h4>归并排序</h4></div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">1.排序思路</div>
 								<div class="panel-body">
-									<p>&nbsp;&nbsp;&nbsp;&nbsp;希尔排序实际上是一种分组插入方法。其基本思想是：先去一个小于n的整数d1作为
-										第一个增量，把表的全部元素分成d<sub>1</sub>个组，所有相互之间距离为d1的倍数的元素放在同一个组中，在各组内进行直接插入排序；
-										然后，取第二个增量d<sub>2</sub>（&lt;d<sub>1</sub>），重复上诉的分组和排序过程，直至所取得增量d<sub>t</sub>=1(d<sub>t</sub>&lt;d<sub>t-1</sub>&lt;...&lt;d<sub>2</sub>&lt;d<sub>1</sub>)
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;归并排序是多次将两个或两个以上的有序表合并成一个新的有序表。最简单的归并是
+										直接将两个有序的子表合并成一个有序的表即二路合并。二路合并排序的基本思路是：将R[0..n-1]看成是n个长度
+										为1的有序序列，然后进行两两归并，得到&lceil;n/2&rceil;个长度为2（最后一个有序序列的长度可能为1）的有序序列
+										，再进行两两归并，得到&lceil;n/4&rceil;个长度为4（最后一个有序序列的长度可能小于4）的有序序列，......，直到
+										得到一个长度为n的有序序列。
 									</p>
 								</div>
 							</div>
@@ -129,39 +131,82 @@
 								<div class="panel-heading">2.排序算法</div>
 							</div>
 							<div>
-								<p>取d<sub>1</sub>=n/2,d<sub>i+1</sub>=&lfloor;d<sub>i</sub>/2&rfloor;时希尔排序算法如下：</p>
-<pre>void ShellSort(RecType R[],int n)	  //希尔排序算法
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;先介绍将两个有序表直接归并为一个有序表的算法Merge()。设两个有序表存放在同一数组中
+									相邻位置上：R[low..mid]，R[mid+1..high]，先将它们合并到一个局部的暂存数组R1中，待合并完成后将R1复制回R中。
+									为了简便，称R[low..mid]为第1段，R[mid..high]为第2段。每次从两个段中取出一个元素进行关键字的比较，将较小者放入R1中
+									，最后将各段中余下的部分直接复制到R1中。这样R1是一个有序表，再将其复制回R中。对应的算法如下
+								
+								</p>
+<pre>void Merge(RecType R[],int low,int mid,int high)	   
 {
-  int i,j,gap;
-  RecType tmp;
-  gap=n/2;	  //增量初始值
-  while(gap>0)
-  {
-    for(i=gap;i&lt;n;i++)	  //对所有相隔gap位置的元素组采用直接插入排序
+  RecType *R1;
+  int i=low,j=mid+1,k=0;	  //k是R1的下标，i,j分别为第1，2段的下标
+  R1=(RecType *)malloc((high-low+1)*sizeof(RecType));	  //动态分配空间
+  while(i&lt;=mid && j&lt;=high)	  //在第1段和第2段均未扫描完时循环
+    if(R[i].key&lt;=R[j].key)	  //将第1段中的元素放入R1中
     {
-      tmp=R[i];
-      j=i-gap;
-      while(j>=0 && tmp.key&lt;R[j].key)	  对相隔gap位置的元素进行排序
-      {
-        R[j+gap]=R[j];
-        j=j-gap;
-      }
-      gap=gap/2;	  //减小增量
+      R1[k]=R[i];
+      i++;k++:
     }
+    else  	//将第2段中的元素放入R1中
+    {
+      R1[k]=R[j];
+      j++;k++;
+    }
+  while(i&lt;=mid)  	//将第1段余下部分复制到R1中
+  {
+  	R1[k]=R[i];
+  	i++;k++:
   }
+  while(j&lt;=high)  	//将第2段余下部分复制到R1中
+  {
+    R1[k]=R[i];
+  	i++;k++:
+  }
+  for(k=0,i=low;i&lt;=high;k++,i++)  	//将R1复制回R中
+    R[i]=R1[k];
+  free(R1);
 }
 
 								</pre>
+								<P>&nbsp;&nbsp;&nbsp;&nbsp;Merge()实现了一次归并排序，其中使用的辅助空间正好是要归并的元素个数。接下来需要利用Merge()
+									解决一趟归并问题。在某趟归并中，设各子表长度为length（最后一个子表的长度可能小于length），则归并前R[0..n-1]中共有
+									&lceil;n/length&rceil;个序的子表：R[0..length-1]，R[length..2length-1]，..，R[(&lceil;n/length&rceil;)Xlength..n-1]。
+									调用Merge()将相邻的一对子表进行归并时，必须对表的个数是奇数以及最后一个子表的长度小于length这两种特殊情况进行特殊处理
+									：若子表个数为奇数，则最后一个子表无须和其它子表归并（即本趟轮空）；若子表个数为偶数，则要注意到最后一对子表中后一个子表
+									的区间上界是n-1。具体算法如下：</P>
+<pre>void MergePass(RecType R[],int length,int n)	  //对整个表进行一趟归并
+{
+  int i;
+  for(i=0;i+2*length-1&lt;n;i=i+2*length)	  //归并length长的两相邻子表
+    Merge(R,i,i+length-1,i+2-length-1);
+  if(i+length-1&lt;n)	  //余下两个子表，后者长度小于length
+    Merge(R,i,i+length-1,n-1);	  //归并这两个子表
+}</pre>
+								<P>&nbsp;&nbsp;&nbsp;&nbsp;其中，一趟归并使用的辅助空间正好为整个表的长度n。<br />
+								   &nbsp;&nbsp;&nbsp;&nbsp;在进行二路归并排序的第1趟归并排序时，将待排序的表R[0..n-1]看做是n个长度为1的有序子表
+								   ，将这些字表两两归并，若n为偶数，则得到N/2个长度为2的有序子表；若n为奇数，则最后一个子表轮空（不参与归并），故本趟归并
+								   完成后，前(&lceil;n/2&rceil;)个有序子表长度为2，但最后一个子表长度仍为1.第2趟归并则是将第1趟归并所得到的(&lceil;n/2&rceil;)
+								   个有序的子表两两归并，如此反复，直到最后得到一个长度为n的有序表位置。对应的二路归并排序算法如下：</P>
+<pre>void MergeSort(RecType R[],int n)
+{
+  int length;
+  for(length=1；length&lt;n；length=2*length)
+    MergePass(R,length,n);
+}
+	
+</pre>
+								
 							</div>
 							<div>
-								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{9,8,7,6,5,4,3,2,1,0}.说明采用希尔排序方法进行排序的过程<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
+								<p><b>例题：</b>设待排序的表有8个元素，其关键字为{18,2,20,34,12,32,6,16}，说明采用归并排序方法进行排序的过程。<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
 								<div class="panel panel-default collapse" id="insertSt" style="background: rgb(245,245,245);">
 									<div class="panel-body">
-										<P>&nbsp;&nbsp;&nbsp;&nbsp;解：其排序过程如下所示。第一躺排序时，d=5,整个表分成5组：(9,4),(8,3),(7,2),(6,1),(5,0)，各组采用直接插入排序方法变成有序的，
-											即结果分别为(4,9),(3,8),(2,7),(1,6),(0,5)，最终结果为(4,3,2,1,0,9,8,7,6,5)。<br />
-											&nbsp;&nbsp;&nbsp;&nbsp;第二趟排序时，d=2，整个表分成两组：(4,2,0,8,6)和(3,1,9,7,5)。第三趟排序时，d=1，整个表为一组，采用直接插入方法使整个数列有序，最终
-											结果为(0,1,2,3,4,5,6,7,8,9)。
+										<P>解：采用二路归并排序时，需要进行3趟归并排序，过程如下所示。第一趟将每两个各含有一个元素的子表归并成一个新表
+										   ，如将{18}和{2}排好序变为{2,18}，第2趟将每两个各含有两个元素的子表归并成一个新表，如将{2,18}和{20,34}归并为
+										   {2,8,20,34}。第3趟将每两个各含有4个元素的子表归并成一个新表，产生最有序表。
 										</P>
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -180,8 +225,8 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="js/jquery.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
 	</body>
 </html>
 
