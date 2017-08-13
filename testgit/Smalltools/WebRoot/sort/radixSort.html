@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>基数排序</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
+	</head>
+	<body>
+		<!--导航栏--->
+			<nav class="navbr navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-h">
+							<span class="sr-only">切换导航</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">小工具使用平台</a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-h">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="insertSort.html">排序算法</a></li>
+									<li class="divider"></li>
+									<li><a href="../search/seqSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">分治法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">动态规划法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">贪心算法</a></li>-->
+								</ul>
+							</li>
+							<li><a href="#">个人作品</a></li>
+							<li><a href="#">留言</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		<!--内容-->
+		<div class="container">
+			<div id="contents"  class="row" style="margin-top: 100px;">
+				<!--左边导航栏-->
+				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
+					<div class="contents-left panel-group" id="accordion">
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden;">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion" data-target="#a1"><span class="glyphicon glyphicon-plus"></span><span class="sf">插入排序</span></a>
+						    <div id="a1" class="collapse">
+						    	<a href="insertSort.html" class="list-group-item"><span class="sf">直接插入排序</span></a>
+						   	    <a href="insertSort1.html" class="list-group-item"><span class="sf">折半插入排序</span></a>
+						   	    <a href="shellSort.html" class="list-group-item"><span class="sf">希尔排序</span></a>
+						    </div>
+					    </div>
+					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a2"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
+							<div id="a2" class="collapse">
+								<a href="bubbleSort.html" class="list-group-item"><span class="sf">冒泡排序</span></a>
+						   	    <a href="quickSort.html" class="list-group-item"><span class="sf">快速排序</span></a>
+							</div>
+						</div>
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a3"><span class="glyphicon glyphicon-plus"></span><span class="sf">选择排序</span></a>
+							<div id="a3" class="collapse">
+								<a href="selectSort.html" class="list-group-item"><span class="sf">直接选择排序</span></a>
+						   	    <a href="heapSort.html" class="list-group-item"><span class="sf">堆排序</span></a>
+							</div>
+						</div>
+						<a href="mergeSort.html" class="list-group-item"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
+						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-ok"></span><span class="sf">基数排序</span></a>
+					</div>
+				</div>
+				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
+				<div class="contents-right col-sm-10 col-md-10">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active">
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">直基数排序</a>
+						</li>
+						<li class="visible-xs dropdown">
+							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+								排序<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						            <li class="dropdown-header">插入排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort.html">直接插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort1.html">折半插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="shellSort.html">希尔排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">交换排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="bubbleSort.html">冒泡排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="quickSort.html">快速排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">选择排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="selectSort.html">直接选择排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="heapSort.html">堆排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="mergeSort.html">归并排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">基数排序</a></li>
+						    </ul>
+						</li>
+						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
+					</ul>
+					<!--标签页-->
+					<div id="myTabContent" class="tab-content">
+						<!--排序算法说明标签页-->
+						<div class="tab-pane fade in active" id="bubbleSort">
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h4>基数排序</h4></div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">1.排序思路</div>
+								<div class="panel-body">
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;其它几种算法均是基于关键字之间的比较来实现的，而基数排序则是通过"分配"和"收集"过程来实现排序的
+										，不需进行关键字间的比较，是一种借助多关键字排序的思想对单关键字排序的方法。<br />
+									   &nbsp;&nbsp;&nbsp;&nbsp;一般的，元素R[i]的关键字R[i].key是由d位数字组成即K<sup>d-1</sup>K<sup>d-2</sup>...K<sup>0</sup>
+									   ，每一位数字表示关键字的一位，其中K<sup>d-1</sup>为最高位，K<sup>0</sup>是最低位，每一位的值都在0&lt;=K<sup>i</sup>&lt;r范围内
+									   ，其中称为基数。例如，对于二进制数r为2，对于十进制数r为10.<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;基数排序有两种：最低位优先（LSD）和最高位优先（MSD）。最低位优先的过程是：先按最低位的值对元素进行排序，在此基础上
+									  再按次低位进行排序，以此类推，由低位向高位，每趟都是根据关键字的一位并在前一趟的基础上对所有元素进行排序，直至最高位。<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;以r为基数最低位优先排序，假设线性表由节点序列a<sub>0</sub>,a<sub>1</sub>,...,a<sub>n-1</sub>构成，每个节点
+									  a<sub>j</sub>的关键字由d元组K<sub>j</sub><sup>d-1</sup>,K<sub>j</sub><sup>d-2</sup>...,K<sub>j</sub><sup>1</sup>,K<sub>j</sub><sup>0</sup>
+									  组成，其中0&lt;=K<sub>j</sub><sup>i</sup>&lt;=r-1(0&lt;=j&lt;n,0&lt;=i&lt;=d-1)，在排序过程中，使用R个队列Q<sub>0</sub>,
+									  Q<sub>1</sub>,...,Q<sub>r-1</sub>，排序过程如下：<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;对i=0,1,...,d-1,依次做一次"分配"和"收集"（其实就是一次稳定的排序过程）。<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;分配：开始时，把Q<sub>0</sub>,Q<sub>1</sub>,...,Q<sub>r-1</sub>各个队列置成空队列，然后依次考察线性表中的每一个节点a<sub>j</sub>
+									  (j=0,1,...,n-1)，如果a<sub>j</sub>的关键字k<sub>j</sub><sup>i</sup>=k，就把a<sub>j</sub>插入到Q<sub>k</sub>队列中。<br />
+									  &nbsp;&nbsp;&nbsp;&nbsp;收集：将Q<sub>0</sub>,Q<sub>1</sub>,...,Q<sub>r-1</sub>各个队列中的节点依次首尾相接，得到新的节点序列，从而组成新的线性表。
+									</p>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">2.排序算法</div>
+							</div>
+							<div>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;假设待排序的数据序列存放在以p为首节点指针的单链表中，其中节点类型RecType1的定义如下:</p>
+<pre>typedef struct node
+{
+  char data[MAXD];	//MAXD为最大关键字位数
+  struct node *next;
+}RecType1;
+
+								</pre>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;其中，data域存放关键字，它是一个字符数组，data[0..MAXD-1]依次存放关键字的低位到高位的各数字字符
+								   关键字的实际位数由参数d指定。<br />
+								   &nbsp;&nbsp;&nbsp;&nbsp;如下基数排序算法radix_sord(p,r,d)实现以r为基数的LSD排序方法。其中参数p为存储待排序序列的单链表的指针，r为基数，d为关键字位数。<br />
+								</p>
+<pre>void RadixSort(RecType *&p,int r,int d)
+//实现基数排序:p为待排序序列的单链表指针，r为基数,d为关键字位数
+{
+  RecType *head[MAXR],*tail[MAXR],*t;	  //定义各链队的首尾指针
+  int i,j,k;
+  for(i=0;i&lt;=d-1;i++)	  //从低位到高位循环
+  {
+    for(j=0;j&lt;r;j++)	  //初始化各链队首尾指针
+      head[j]=tail[j]=NULL; 	
+    while(p!null)  	//分配：对于原链表中的每个节点循环
+    {
+      k=->data[i]-'0';	  //找第k个链队
+      if(head[k]==NULL)  	//第k个链队空时，队首队尾指针均指向*p
+      {
+        head[k]=p;
+        tail[k]=p;
+      }
+      else
+      {
+       	tail[k]->next=p;  	//第k个链队非空时，*p入队
+       	tail[k]=p;
+      }
+      p=p->next;	  //取下一个待排序元素
+    }
+    p=NULL;	  //重新用p来收集所有节点
+    for(j=0;j&lt;j++)	  //收集：对于每一个链队循环
+      if(head[j]!=NULL)	  //若第j个链队是第一个非空链队
+      {
+        if(p==NULL)
+        {
+          p=head[j];
+          t=tail[j];
+        }
+        else  	//若第j个链队是第其它非空链队
+        {
+          t->next=head[j];
+          t=tail[j];
+        }
+      }
+    t->next=NULL;	  //最后一个节点的next域置NULL
+    printf("按%s位排序\t",(i==0？"个":"十"));
+    DispLink(p);	 //调用DispLink显示数列
+  }
+}
+</pre>
+							</div>
+							<div>
+								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{75,23,98,44,57,12,29,64,38,82}.说明采用基数排序方法进行的过程。<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
+								<div class="panel panel-default collapse" id="insertSt" style="background: rgb(245,245,245);">
+									<div class="panel-body">
+										<P>解：这里n=10,d=2,r=10,先按个位数进行排序，再按十位数进行排序，排序过程如下。</P>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--时间效率测试标签页-->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="container bottom">
+				<div class="row">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+	</body>
+</html>
+
+
+</html>

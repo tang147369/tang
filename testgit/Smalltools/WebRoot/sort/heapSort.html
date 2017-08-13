@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>堆排序</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
+	</head>
+	<body>
+		<!--导航栏--->
+			<nav class="navbr navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-h">
+							<span class="sr-only">切换导航</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">小工具使用平台</a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-h">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="insertSort.html">排序算法</a></li>
+									<li class="divider"></li>
+									<li><a href="../search/seqSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">分治法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">动态规划法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">贪心算法</a></li>-->
+								</ul>
+							</li>
+							<li><a href="#">个人作品</a></li>
+							<li><a href="#">留言</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		<!--内容-->
+		<div class="container">
+			<div id="contents"  class="row" style="margin-top: 100px;">
+				<!--左边导航栏-->
+				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
+					<div class="contents-left panel-group" id="accordion">
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden;">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion" data-target="#a1"><span class="glyphicon glyphicon-plus"></span><span class="sf">插入排序</span></a>
+						    <div id="a1" class="collapse">
+						    	<a href="insertSort.html" class="list-group-item"><span class="sf">直接插入排序</span></a>
+						   	    <a href="insertSort1.html" class="list-group-item"><span class="sf">折半插入排序</span></a>
+						   	    <a href="shellSort.html" class="list-group-item"><span class="sf">希尔排序</span></a>
+						    </div>
+					    </div>
+					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a2"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
+							<div id="a2" class="collapse">
+								<a href="bubbleSort.html" class="list-group-item"><span class="sf">冒泡排序</span></a>
+						   	    <a href="quickSort.html" class="list-group-item"><span class="sf">快速排序</span></a>
+							</div>
+						</div>
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a3"><span class="glyphicon glyphicon-plus"></span><span class="sf">选择排序</span></a>
+							<div id="a3" class="collapse">
+								<a href="selectSort.html" class="list-group-item"><span class="sf">直接选择排序</span></a>
+						   	    <a href="#" class="list-group-item"><span class="sf">堆排序</span></a>
+							</div>
+						</div>
+						<a href="mergeSort.html" class="list-group-item"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
+						<a href="radixSort.html" class="list-group-item"><span class="glyphicon glyphicon-ok"></span><span class="sf">基数排序</span></a>
+					</div>
+				</div>
+				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
+				<div class="contents-right col-sm-10 col-md-10">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active">
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">堆排序</a>
+						</li>
+						<li class="visible-xs dropdown">
+							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+								排序<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						            <li class="dropdown-header">插入排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort.html">直接插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort1.html">折半插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="shellSort.html">希尔排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">交换排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="bubbleSort.html">冒泡排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="quickSort.html">快速排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">选择排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="selectSort.html">直接选择排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">堆排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="mergeSort.html">归并排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="radixSort.html">基数排序</a></li>
+						    </ul>
+						</li>
+						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
+					</ul>
+					<!--标签页-->
+					<div id="myTabContent" class="tab-content">
+						<!--排序算法说明标签页-->
+						<div class="tab-pane fade in active" id="bubbleSort">
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h4>堆排序</h4></div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">1.排序思路</div>
+								<div class="panel-body">
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;堆排序是一种树形选择排序方法，它的特点是，在排序过程中，将R[1..n]看成是一颗完全二叉树的顺序存储结构
+										，利用完全二叉树中双亲节点和孩子节点之间的内在关系，在当前无序区中选择关键字最大（或最小）的元素。<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;堆的定义是：n个关键字序列K<sub>1</sub>,K<sub>2</sub>,...,K<sub>n</sub>称为堆，当且
+										仅当该序列满足如下性质（简称为堆性质）；<br/>
+										&nbsp;&nbsp;&nbsp;&nbsp;(1)K<sub>i</sub>&lt;=K<sub>2i</sub>且K<sub>i</sub>&lt;=K<sub>2i+1</sub>
+										<br />&nbsp;&nbsp;&nbsp;&nbsp;或<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;(2)K<sub>i</sub>&gt;=K<sub>2i</sub>且K<sub>i</sub>&gt;=K<sub>2i+1</sub>(i&lt;=i&lt;=&lceil;n/2&rceil;)<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;满足第(1)种情况的堆称为小根堆，满足第(2)种情况的堆称为大根堆。下面讨论的堆是大根堆。
+										<br />&nbsp;&nbsp;&nbsp;&nbsp;堆排序的排序过程与直接选择排序类似，只是挑选最大或最小元素的不同，这里采用大根堆
+										每次挑选最大元素归位。挑选最大元素的方法是将数组中储存的数据看成是一颗完全二叉树，利用完全二叉树中双亲节点和孩子节点之间
+										的内在关系来选择关键字最大元素。具体做法是：把待排序的表的关键字存放在数组R[1..n](注意，为了与二叉树的顺序存储一致，堆排序的数据序列的
+										下标从1开始)之中，将R看做一颗二叉树，每个节点表示一个元素，源表的第一个元素R[1]作为二叉树的根，以下各元素R[2..n]依次逐层从左到右顺序排列
+										，构成一颗完全二叉树，节点R[i]的左孩子是R[2i]，右孩子是R[2i+1]，双亲是R[i/2];
+										
+									</p>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">2.排序算法</div>
+							</div>
+							<div>
+								<p>
+									&nbsp;&nbsp;&nbsp;&nbsp;堆排序的关键是构造初始堆，这里采用筛选算法建堆：假设完全二叉树的某一个节点i，它的左子树、右子树已是堆，接下来需要将
+									R[2i].key与R[2i+1].key之中最大者与R[i].key比较，若R[i].key较小则将其与最大孩子的关键字交换，这可能破环下一级的堆，
+									于是继续采用上述方法构造下一级的堆，直到完全二叉树中节点i构成堆为止。对于任意一颗完全二叉树，i取&lfloor;n/2&rfloor;~1，
+									反复利用上述方法建堆。大者“上浮"，小者被“筛选”下去。调整堆的算法sift()如下：
+								</p>
+<pre>void sift(RecType R[],int low,int high)	  
+{
+  int i=low,j=2*i;	  //R[j]是R[i]的左孩子
+  RecType tmp=R[i];
+  while(j&lt;=high)
+  {
+    if(j&lt;high && R[j].key&lt;R[j+1].key)//若右孩子较大，把j指向右孩子
+	  j++;
+	if(tmp.key&lt;R[j].key)
+	{
+	  R[i]=R[j];	  //将R[j]调整到双亲节点的位置
+	  i=j;	  //修改i和j的值，以便继续向下筛选
+	  j=2*i;
+	}	  //筛选结束
+	else break;
+  }
+  R[i]=tmp;	  //被筛选节点的值放入最终位置
+}
+
+								</pre>
+								<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;在初始堆构造好后，根节点一定是最大关键字节点，将其放到序列的最后，也就是与最后一个叶子结点交换。
+								由于最大元素已归位，待排序的元素个数减少一个，但由于根节点的改变，这n-1个节点不一定为堆，调用一次sift算法将这n-1个节点调整成堆
+								，其根节点为次大的元素，将它放到序列的倒数第二个位置，即将堆中根与最后一个叶子交换，待排序的元素个数变为n-2个，再调整，再将
+								根节点归位，如此反复操作，直到完全二叉树只剩一个根为止。实现堆排序的算法如下：
+								</p>
+<pre>void HeapSort(RecType R[],int n)	  
+{
+  int i;
+  RecType tmp;
+  for(i=n/2;i&gt;=1;i--)	  //循环建立初始堆
+    sift(R,i,n);
+  for(i=n;i&gt;=2;i--)	  //进行n-1躺堆排序，每一趟堆排序的元素个数减1
+  {
+    tmp=R[i];	  //将最后一个元素同当前区内R[1]对换
+    R[1]=R[i];
+    R[i]=tmp;
+    sift(R,1,i-1);	  //筛选R[1]节点，得到i-1个节点的堆
+  }
+}								
+							</div>
+							<div>
+								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{6，8，7，9，0，1，3，2，4，5}.说明采用堆3排序方法进行的过程。<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
+								<div class="panel panel-default collapse" id="insertSt" style="background: rgb(245,245,245);">
+									<div class="panel-body">
+										<P>解：其初始状态如图10.11(a)所示，通过第一个for循环调用sift()产生的初始堆如图10.11(b)所示，这时R中关键字序列为{9,8,7,6,5,1,3,2,4,0}。堆排序过程如图10.12所示，每输出一个元素，就对堆进行一次筛选调整</P>									
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--时间效率测试标签页-->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="container bottom">
+				<div class="row">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+	</body>
+</html>
+
+
+</html>
