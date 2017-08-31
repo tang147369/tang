@@ -40,8 +40,8 @@
 									<li><a href="#">贪心算法</a></li>-->
 								</ul>
 							</li>
-							<li><a href="#">个人作品</a></li>
-							<li><a href="#">留言</a></li>
+							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
+							<li><a href="../link/link.html">链接</a></li>
 						</ul>
 					</div>
 				</div>
@@ -123,37 +123,37 @@
 								<div class="panel-heading">在"生成"按钮前的输入框输入要生成的随机数的位数（小于100000），再点击生成按钮即可生成待排序随机数;生成后点击排序即可。</div>
 							</div>
 							<div class="row">
-								<div class="col-md-5">
-									<textarea id="randomNum" class="form-control" rows="6" readonly="readonly"></textarea>
+								<div class="col-md-4">
+									<textarea id="randomNum" class="form-control" rows="8" readonly="readonly"></textarea>
 								</div>
-								<div class="col-md-2 ">
+								<div class="col-md-4 ">
 									<br  />
 										<div class="input-group input-group-sm">
 									            <input id="input_num" type="text" class="form-control">
 									            <span class="input-group-btn">
-									            	<!-- <button id="generate" class="btn btn-info" type="submit">生成</button> -->
-									           		<button id="generate" type="submit" class="btn btn-info  dropdown-toggle" data-toggle="dropdown">生成
-												        <span class="caret"></span>
-												    </button>
-												    <ul class="dropdown-menu pull-right list_ul_li_a" role="menu"> 
-												        <li><a>直接插入排序</a></li>
-												        <li><a>这般插入排序</a></li>
-												        <li><a>希尔排序</a></li>
-												        <li><a>冒泡排序</a></li>
-												        <li><a>快速排序</a></li>
-												        <li><a>直接选择排序</a></li>
-												        <li><a>堆排序</a></li>
-												        <li><a>归并排序</a></li>
-												        <li><a>基数排序</a></li>
-												    </ul>
+									            	 <button id="generate" class="btn btn-info" type="submit">生成</button> 
 									            </span>
 								        </div>
 							        <br/>
-							        <p style="text-align:right;"><button type="button" id="orderButton" class="btn btn-info btn-sm orderButton">排序</button></p>
-									<p id="time" style="text-align:center;"></p>
+							        <div style="text-align:right;" class="dropdown">
+							        <span id="time" style="text-align:center;margin-right:30px;"></span>
+							           <button type="button" id="orderButton"  class="btn btn-info btn-sm dropdown-toggle orderButtonC" data-toggle="dropdown">排序<span class="caret"></span></button>
+								       <ul class="dropdown-menu pull-right list_ul_li_a" role="menu"> 
+									        <li onclick="toSort('insert')"><a>直接插入排序</a></li>
+										    <li onclick="toSort('insert1')"><a>折半插入排序</a></li>
+										    <li onclick="toSort('shell')"><a>希尔排序</a></li>
+										    <li onclick="toSort('bubble')"><a>冒泡排序</a></li>
+										    <li onclick="toSort('quick')"><a>快速排序</a></li>
+										    <li onclick="toSort('select')"><a>直接选择排序</a></li>
+										    <li onclick="toSort('heap')"><a>堆排序</a></li>
+										    <li onclick="toSort('merge')"><a>归并排序</a></li>
+										    <!-- <li onclick="toSort('radix')"><a>基数排序</a></li> -->
+									    </ul>
+							        </div>
+									<br />
 								</div>
-								<div class="col-md-5">
-									<textarea id="bubbleSor" class="form-control" rows="6" readonly="readonly"></textarea>
+								<div class="col-md-4">
+									<textarea id="bubbleSor" class="form-control" rows="8" readonly="readonly"></textarea>
 								</div>
 							</div>
 						</div>
@@ -172,11 +172,58 @@
 		<script type="text/javascript" src="../js/jquery.js" ></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
 		<script type="text/javascript"> 
+		function toSort(s)
+		{
+			var num=$("#input_num").val();
+			var randomNumber=$("#randomNum").val();//获取生成的随机数
+			if(randomNumber != ""){
+				$("#time").html("<span style='color:red;'>排序中，请稍等...</span>");
+				//点击排序后隐藏排序按钮
+				$("#orderButton").addClass("orderButtonC");
+				var type=s;
+				var num1=document.getElementById("input_num").value;//获取输入框的值
+				//alert(num1+""+s);
+			    var xmlhttp;
+				if (window.XMLHttpRequest)
+					  {
+					    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+					    xmlhttp=new XMLHttpRequest();
+					  }
+					  else
+					  {
+					    // IE6, IE5 浏览器执行代码
+					    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					  }
+					  xmlhttp.onreadystatechange=function()
+					  {
+					    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+					      var data=xmlhttp.responseText;
+					     // alert(data);
+					      var datasplit = data.split(",");
+					      
+					      $("#bubbleSor").text(datasplit[0]);//排序结果
+				          $("#time").text(datasplit[1]);//排序时间
+					    }
+					  }
+					  xmlhttp.open("POST","../Time_efficiency",true);
+					  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			          xmlhttp.send("input_num1="+num1+"&type="+s+"&order=order&randomNumber="+randomNumber);
+			}else{
+		    	 $("#randomNum").text("");
+		    	 $("#time").text("");
+		    	 $("#orderButton").addClass("orderButtonC");
+		    	 $("#bubbleSor").text("");
+		    }
+			
+			}
+		 
 		//生成随机数
 		$(document).ready(function(){
 			$("#generate").click(function(){
 				var num=$("#input_num").val();
-			    if(num != ""){
+				var reg = /^\d+$/;//仅允许数字
+				if(num != "" && (reg.test(num)==true) && num>0 && num<=99999){
 			    	$.post("../Time_efficiency",
 			    			
 			    			
@@ -184,27 +231,25 @@
 						 input_num:num
 			       },
      		       function(data,status){
-			           // alert("数据: \n" + data + "\n状态: " + status); 
-				   	   if(data == "input_false"){
+			           //alert("数据: \n" + data + "\n状态: " + status); 
+				   	   if(data == "false"){
 			           		$("#input_num").addClass("red");
 				       }else{
 						       $("#randomNum").text(data);
-						       if(num!=""){
-						    	   //如果服务端返回了数据并且输入框不为空则设置排序按钮出现，并隐藏之前排序时间
-						      		$("#orderButton").removeClass("orderButton");
-						      		$("#time").text("");
-						      		$("#bubbleSor").text("");
-						       	}
+						       //如果服务端返回了数据并且输入框不为空则设置排序按钮出现，并隐藏之前排序时间
+						       $("#orderButton").removeClass("orderButtonC");
+						       $("#time").text("");
+						       $("#bubbleSor").text("");
 					   }
 				    });
 			    }else{
 			    	 $("#randomNum").text("");
 			    	 $("#time").text("");
-			    	 $("#orderButton").addClass("orderButton");
+			    	 $("#orderButton").addClass("orderButtonC");
 			    	 $("#bubbleSor").text("");
 			    }
 			});
-		});
+		}); 
 		//监测输入框数据，输入数据不符合要求的话输入框产生相应变化
 		$(document).ready(function(){
 			var reg = /^\d+$/;
@@ -216,27 +261,6 @@
 			    }else{
 			    	$("#input_num").removeClass("red");
 			    }
-			});
-		});
-		//排序
-		$(document).ready(function(){
-			$("#orderButton").click(function(){
-				//若还未从服务器返回排序结果则提示
-				$("#time").html("<span style='color:red;'>排序中，请稍等...</span>");
-				//点击排序后隐藏排序按钮
-				$("#orderButton").addClass("orderButton");
-				$.post("../Time_efficiency",
-			{
-					input_num:$("#input_num").val(),
-					order:"order"
-			},
-					function(data,status){
-				   //将从服务器返回数据以‘,’分割为排序结果和排序时间
-				    var datasplit = data.split(",");
-					//alert("数据: \n" + data + "\n状态: " + status); 
-		        	$("#bubbleSor").text(datasplit[0]);//排序结果
-		        	$("#time").text(datasplit[1]);//排序时间
-				});
 			});
 		});
 		</script>

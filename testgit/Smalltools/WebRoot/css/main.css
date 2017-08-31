@@ -1,16 +1,16 @@
 .sf {
 	margin-left: 10px;
 }
-
+#contents{
+	font-family:"黑体";;
+}
 .contents-right {
 	padding-left: 30px;
 	padding-right:30px ;
-	font-family:"黑体";
 }
 .contents-left{
 	width:140px;
 	font-weight: 500;
-	font-family:'黑体';
 }
 .h-span:hover{
 	text-decoration: underline;
@@ -20,9 +20,23 @@
 .red{
 	border-color:red;
 }
-.orderButton{
-	display:none;
+.orderButtonC{
+	
 }
 .list_ul_li_a{
 	cursor: pointer;
+}
+.conversion_panel{
+	padding-top: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.link_bt{
+	margin:10px 20px 10px 0px;
+}
+.choose:hover{
+	opacity: 0.7;
+}
+.dbToExcel{
+	margin-top: 20px;
 }

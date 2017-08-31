@@ -40,8 +40,8 @@
 									<li><a href="#">贪心算法</a></li>-->
 								</ul>
 							</li>
-							<li><a href="#">个人作品</a></li>
-							<li><a href="#">留言</a></li>
+							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
+							<li><a href="../link/link.html">链接</a></li>
 						</ul>
 					</div>
 				</div>
@@ -146,7 +146,7 @@
     if(R[i].key&lt;=R[j].key)	  //将第1段中的元素放入R1中
     {
       R1[k]=R[i];
-      i++;k++:
+      i++;k++;
     }
     else  	//将第2段中的元素放入R1中
     {
@@ -156,12 +156,12 @@
   while(i&lt;=mid)  	//将第1段余下部分复制到R1中
   {
   	R1[k]=R[i];
-  	i++;k++:
+  	i++;k++;
   }
   while(j&lt;=high)  	//将第2段余下部分复制到R1中
   {
     R1[k]=R[i];
-  	i++;k++:
+  	j++;k++;
   }
   for(k=0,i=low;i&lt;=high;k++,i++)  	//将R1复制回R中
     R[i]=R1[k];
@@ -179,7 +179,7 @@
 {
   int i;
   for(i=0;i+2*length-1&lt;n;i=i+2*length)	  //归并length长的两相邻子表
-    Merge(R,i,i+length-1,i+2-length-1);
+    Merge(R,i,i+length-1,i+2*length-1);
   if(i+length-1&lt;n)	  //余下两个子表，后者长度小于length
     Merge(R,i,i+length-1,n-1);	  //归并这两个子表
 }</pre>
@@ -191,7 +191,7 @@
 <pre>void MergeSort(RecType R[],int n)
 {
   int length;
-  for(length=1；length&lt;n；length=2*length)
+  for(length=1;length&lt;n;length=2*length)
     MergePass(R,length,n);
 }
 	

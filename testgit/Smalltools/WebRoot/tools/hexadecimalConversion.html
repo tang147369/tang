@@ -4,7 +4,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>顺序查找</title>
+		<title>进制转换</title>
 		<link rel="stylesheet" href="../css/bootstrap.min.css" />
 		<link rel="stylesheet" href="../css/main.css" />
 		<script type="text/javascript" src="../js/main.js" ></script>
@@ -42,7 +42,6 @@
 							</li>
 							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
 							<li><a href="../link/link.html">链接</a></li>
-							<li><a href="../game/jigsaw.html">其它</a></li>
 						</ul>
 					</div>
 				</div>
@@ -53,62 +52,75 @@
 				<!--左边导航栏-->
 				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
 					<div class="contents-left panel-group" id="accordion">
-						<a href="#" class="list-group-item" ><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">顺序查找</span></a>
-						<a href="binSearch.html" class="list-group-item" ><span class="glyphicon glyphicon-ok"></span><span class="sf">折半查找</span></a>
+						<a href="#" class="list-group-item" ><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">进制转换</span></a>
+						<a href="dbToExcel.html" class="list-group-item" ><span class="glyphicon glyphicon-ok"></span><span class="sf">DbToExcel</span></a>
 					</div>
 				</div>
 				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
 				<div class="contents-right col-sm-10 col-md-10">
 					<ul id="myTab" class="nav nav-tabs">
 						<li class="active">
-							<a style="color: black;" href="#bubbleSort" data-toggle="tab">顺序查找</a>
+							<a style="color: black;" href="#conversion" data-toggle="tab">进制转换</a>
 						</li>
+						
 						<li class="visible-xs dropdown">
 							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
-								查找<span class="caret"></span>
+								小工具<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						            <li><a role="menuitem" tabindex="-1" href="#">顺序查找</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">进制转换</a></li>
 						            <li role="presentation" class="divider"></li>
-						            <li><a role="menuitem" tabindex="-1" href="binSearch.html">折半查找</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="dbToExcel.html">DbToExcel</a></li>
 						    </ul>
 						</li>
 					</ul>
-					<!--标签页-->
-					<div id="myTabContent" class="tab-content">
-						<!--排序算法说明标签页-->
-						<div class="tab-pane fade in active" id="bubbleSort">
+					<!--进制转换的面板-->
+					<div class="tab-content">
+						<div  class="tab-pane fade in active" id="conversion">
 							<div class="panel panel-default">
-							    <div class="panel-heading"><h4>顺序查找</h4></div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">1.算法简介</div>
-								<div class="panel-body">
-									<p>&nbsp;&nbsp;&nbsp;&nbsp;顺序查找是一种最简单的查找算法。它的基本思路是：从表的一端开始，顺序扫描线性表，
-										依次将扫描到的关键字和给定k值相比较，若当前扫描到的关键字与k相等，则查找成功；若扫描结束，仍未找到关键字等于k的元素
-										，则查找失败。
-									</p>
+								<div class="panel-body row">
+									<div class="col-md-7 conversion_panel">
+										<!--输入框组-->
+										<div class="input-group">
+									        <span class="input-group-addon">二进制</span>
+							                <input id="two" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input  type="button" class="btn btn-info" value="转换" onclick="conversion(two.value,'2')">
+							                </span>										        
+								        </div>
+								        <br />
+								        <div class="input-group">
+									        <span class="input-group-addon">八进制</span>
+							                <input id="eight" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input type="button" class="btn btn-info" value="转换" onclick="conversion(eight.value,'8')">
+							                </span>
+								        </div>
+								        <br />
+								        <div class="input-group">
+									        <span class="input-group-addon">十进制</span>
+							                <input id="ten" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input type="button" class="btn btn-info" value="转换" onclick="conversion(ten.value,'10')">
+							                </span>
+								        </div>
+								        <br />
+								        <div class="input-group">
+									        <span class="input-group-addon">十六进制</span>
+							                <input id="sixteen" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input type="button" class="btn btn-info" value="转换" onclick="conversion(sixteen.value,'16')">
+							                </span>
+								        </div>
+								        <br />
+								        <br />
+								    </div>
+								    <div class="col-lg-5
+								    	
+								    </div>
 								</div>
 							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">2.顺序查找算法</div>
-							</div>
-							<div>
-								<p>顺序查找算法如下(在顺序表R[0..n-1]中查找关键字为k的元素，成功时返回找到的元素的逻辑序号，失败时返回0)</p>
-<pre>void SeqSearch(SeqList R,int n,KeyType k)	  
-{
-  int i=0;
-  while(i&lt;n && R[i].key!=k)	  //从表头开始往后找
-    i++;
-  if(i&gt;=n)	  //未找到返回0
-    return 0;
-  else
-    return i+1;	  //找到返回逻辑序号i+1
-}
-
-								</pre>
-							</div>
-						</div>						
+						</div>
 					</div>
 				</div>
 			</div>
