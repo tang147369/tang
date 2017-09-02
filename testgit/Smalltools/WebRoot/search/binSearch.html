@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>折半查找</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
+	</head>
+	<body>
+		<!--导航栏--->
+			<nav class="navbr navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-h">
+							<span class="sr-only">切换导航</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">小工具使用平台</a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-h">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="../sort/insertSort.html">排序算法</a></li>
+									<li class="divider"></li>
+									<li><a href="../search/binSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">分治法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">动态规划法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">贪心算法</a></li>-->
+								</ul>
+							</li>
+							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
+							<li><a href="../link/link.html">链接</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		<!--内容-->
+		<div class="container">
+			<div id="contents"  class="row" style="margin-top: 100px;">
+				<!--左边导航栏-->
+				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
+					<div class="contents-left panel-group" id="accordion">
+						<a href="seqSearch.html" class="list-group-item" ><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">顺序查找</span></a>
+						<a href="#" class="list-group-item" ><span class="glyphicon glyphicon-ok"></span><span class="sf">折半查找</span></a>
+					</div>
+				</div>
+				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
+				<div class="contents-right col-sm-10 col-md-10">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active">
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">折半查找</a>
+						</li>
+						<li class="visible-xs dropdown">
+							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+								查找<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						            <li><a role="menuitem" tabindex="-1" href="seqSearch.html">顺序查找</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">折半查找</a></li>
+						    </ul>
+						</li>
+					</ul>
+					<!--标签页-->
+					<div id="myTabContent" class="tab-content">
+						<!--排序算法说明标签页-->
+						<div class="tab-pane fade in active" id="bubbleSort">
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h4>折半查找</h4></div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">1.算法简介</div>
+								<div class="panel-body">
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;折半查找又称二分查找，它是一种效率较高的查找方法。但是，折半查找要求线性表是有序表
+										，即表中按关键字有序。在下面的讨论中，假设有序表是递增有序的。<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;折半查找的基本思路是：设R[low..high]是当前的查找区间，首先确定该区间的中点位置
+										mid=&lfloor;(low+high)/2&rfloor;，然后将待查的k值与R[mid].key比较：<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;(1)若R[mid].key=k,则查找成功并返回该元素的逻辑序号；<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;(2)若R[mid].key&gt;k,则由有序表的有序性可知R[mid..n-1].key均大于k，因此若表中存在关键字
+										等于k的元素，则该元素必定是在位置mid左边的子表R[0..mid-1]中，故新的 查找区间是左子表R[0..mid-1];<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;(3)若R[mid].key&lt;k,则要查找的k必在mid的右子表R[mid+1..n-1]中，即新的查找区间是右子表R[mid+1..n-1]。<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;下一次查找是针对新的查找区间进行的。<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;因此，可以从初始的查找区间R[0..n-1]开始，每经过一次与当前查找区间额中点位置上的关键字的比较，就可确定查找是否成功，不成功则
+										查找区间缩小一半。这一过程反复直至找到关键字为k的元素，或者直至当前的查找区间为空（即查找失败）时为止。
+										
+									</p>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">2.折半查找算法</div>
+							</div>
+							<div>
+								<p>其算法如下(在有序表R[0..n-1]中进行折半查找，成功时返回元素的逻辑序号，失败时返回0)：</p>
+<pre>void BinSearch(SeqList R,int n,KeyType k)	  
+{
+  int low=0,high=n-1,mid;
+  while(low&lt;=high)	  //当前区间存在元素时循环
+  {
+    mid=(low+high)/2; 
+    if(R[mid].key==k)	  //查找成功返回其逻辑序号mid+1
+      return mid+1;
+    if(R[mid].key>k)  	//继续在R[low..mid-1]中查找
+      high=mid-1;
+    else
+      low=mid+1;  	//继续在R[mid+1..high]中查找
+  }
+}
+
+								</pre>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="container bottom">
+				<div class="row">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+	</body>
+</html>
+
+
+</html>

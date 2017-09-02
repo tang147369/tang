@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>拼图</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
+	</head>
+	<body>
+		<!--导航栏--->
+			<nav class="navbr navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-h">
+							<span class="sr-only">切换导航</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">小工具使用平台</a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-h">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="../sort/insertSort.html">排序算法</a></li>
+									<li class="divider"></li>
+									<li><a href="../search/binSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">分治法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">动态规划法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">贪心算法</a></li>-->
+								</ul>
+							</li>
+							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
+							<li><a href="../link/link.html">链接</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		<!--内容-->
+		<div class="container">
+			<div id="contents"  class="row" style="margin-top: 100px;">
+				<!--左边导航栏-->
+				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
+					<div class="contents-left panel-group" id="accordion">
+						<a href="#" class="list-group-item" ><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">拼图</span></a>
+						<a href="#" class="list-group-item" ><span class="glyphicon glyphicon-ok"></span><span class="sf">其它</span></a>
+					</div>
+				</div>
+				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
+				<div class="contents-right col-sm-10 col-md-10">
+					<div><p>拼图小游戏,自己选择图片和切分块数，切割为正方形。</p></div>
+					<table>
+						<tr>
+							<td colspan="2" class="choose" style="background: url(../img/img.jpg)no-repeat;width: 80px;"><input  type="file" id="upfile" onchange="setImg(this)" style="opacity: 0;"/>&nbsp;&nbsp;&nbsp;</td>
+						</tr>
+						<tr>切分块数  横向:<input type="text" id="anum" style="width:40px;" value="3"/>*纵向:<input type="text" id="vnum" style="width:40px;" value="3"/></tr>
+						<tr>
+							<td width="300"><img id="orgImg" style="width:300px;height:300px;display:none;margin-right: 10px;"/></td>
+							<td><div style="height:300px;width:300px;position:relative" id="_div"></div> </td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="container bottom">
+				<div class="row">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+		<script>
+		function $(id){
+			return document.getElementById(id);
+		}
+		//获取图片
+		function setImg(obj){
+		try{
+			if(obj.value!=""){
+				var orgImg=$("orgImg");
+				orgImg.style.display="block";
+				if( obj.files && obj.files[0] ){   //ff
+					var objectURL = window.URL.createObjectURL(obj.files[0]);
+					orgImg.src=objectURL;
+				}
+				else{//ie
+					orgImg.src=obj.value;
+				}
+				getImgArray(orgImg);
+			}
+		}catch(e){
+			alert(e.message);
+		}
+		}
+		var imgArray=new Array();//存放单元格信息
+		var NullPos={};//记录空单元格信息
+		var np//空的实际顺序
+		
+		
+		var anum=3;
+		var vnum=3;
+		var _w=300;_h=300
+		var cw,ch;
+		//需在延迟一段时间后执行
+		function getImgArray(img){
+			
+			if($("anum").value==""||$("vnum").value==""){
+				alert("填写切分块数。");
+				window.reload();
+			}
+			else{
+				anum=parseInt($("anum").value);
+				vnum=parseInt($("vnum").value);
+				if(anum==vnum){
+					NullPos.x=anum-1;
+				NullPos.y=vnum-1;
+				NullPos.no=anum*vnum-1;
+				np=anum*vnum-1
+				var tempArray=new Array();
+				var tempArray2=new Array();
+				for(var v=0;v<(anum*vnum);v++){
+					tempArray[v]=v;
+				}
+				for(var v=0;v<(anum*vnum);v++){
+					tempArray2[v]=tempArray.splice(Math.floor(Math.random()*(tempArray.length-1)),1);
+					//tempArray2[v]=tempArray[v];
+				}
+				var orgImg=new Image();//获取原始图片大小
+				orgImg.src=img.src;
+				var ow=orgImg.width;
+				var oh=orgImg.height;
+				//单元格宽高
+				 cw=_w/anum;
+				 ch=_h/vnum;
+				var temp=0;
+				for(var i=0;i<anum;i++){
+					for(var j=0;j<vnum;j++){
+						//od实际顺序
+						//nod应该顺序
+						//x,y  实际坐标
+						//w,h 单元格宽高
+						var imgMap={};
+						imgMap.nod=tempArray2[temp]
+						imgMap.od=i*anum+j;
+						imgMap.x=i;
+						imgMap.y=j;
+						imgArray.push(imgMap);
+						
+						//计算x,y
+						if(tempArray2[temp]!=(anum*vnum-1)){
+							var order=tempArray2[temp];
+							var vy=Math.floor(order/anum);//单元格坐标 1
+							var vx=order%anum; 2
+							vx=vx*cw;
+							vy=vy*ch;
+							//插入div img
+							$("_div").innerHTML+="<div id=\""+imgMap.nod+"_div\" style=\"position:absolute;left:"+(j*cw)+"px;top:"+(i*ch)+"px;width:"+cw+"px;height:"+ch+"px;border:1px solid black;overflow:hidden;\"><img id=\""+imgMap.nod+"_img\" onclick=\"changePos('"+imgMap.nod+"')\"   src=\""+img.src+"\" style=\"width:"+_w+"px;height:"+_h+"px;margin-left:-"+vx+"px;margin-top:-"+vy+"px;cursor:pointer\"/>";
+						}
+						temp++;
+					}
+				}
+				}
+				//alert($("_div").innerHTML)
+			}
+		}
+		
+		//点击换位置
+		function changePos(order){
+			var map	;
+			for(var i=0;i<imgArray.length;i++){
+				if(imgArray[i].nod==order){
+					map=imgArray[i];
+					break;
+				}
+			}
+			var ss=imgArray;
+			//获取坐标 x,y
+			var x,y;
+			//左边
+			x=map.x-1;
+			y=map.y;
+			if(matchXY(x,y,map)){
+				return true;
+			}
+			x=map.x+1;
+			y=map.y;
+			if(matchXY(x,y,map)){
+				return true;
+			}
+			x=map.x;
+			y=map.y+1;
+			if(matchXY(x,y,map)){
+				return true;
+			}
+			x=map.x;
+			y=map.y-1;
+			if(matchXY(x,y,map)){
+				return true;
+			}
+		}
+		function matchXY(x,y,map){
+			if(x>=0&&x<anum&&y>=0&&y<vnum&&x==NullPos.x&&y==NullPos.y){
+				//map.x=NullPos.x;
+				//map.y=NullPos.y;
+				var tempod=map.od;
+				var tempnod=map.nod;
+				NullPos.x=map.x;
+				NullPos.y=map.y;
+				imgArray[tempod].nod=imgArray[np].nod;
+				imgArray[np].nod=tempnod;
+				$(tempnod+"_div").style.left=(imgArray[np].y*cw)+"px";
+				$(tempnod+"_div").style.top=(imgArray[np].x*ch)+"px";
+				np=tempod;
+				Complete();
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		function Complete(){
+			//var ss=imgArray;
+			var flag=true;
+			for(var i=0;i<imgArray.length;i++){
+				if(imgArray[i].nod!=imgArray[i].od){
+					flag=false;
+				}
+			}
+			if(flag){
+				alert("恭喜完成。")
+			}
+		}
+		</script>
+	</body>
+</html>
+
+
+</html>

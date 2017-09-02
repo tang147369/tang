@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>进制转换</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
+	</head>
+	<body>
+		<!--导航栏--->
+			<nav class="navbr navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-h">
+							<span class="sr-only">切换导航</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">小工具使用平台</a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-h">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="../sort/insertSort.html">排序算法</a></li>
+									<li class="divider"></li>
+									<li><a href="../search/binSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">分治法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">动态规划法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">贪心算法</a></li>-->
+								</ul>
+							</li>
+							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
+							<li><a href="../link/link.html">链接</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		<!--内容-->
+		<div class="container">
+			<div id="contents"  class="row" style="margin-top: 100px;">
+				<!--左边导航栏-->
+				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
+					<div class="contents-left panel-group" id="accordion">
+						<a href="#" class="list-group-item" ><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">进制转换</span></a>
+						<a href="dbToExcel.html" class="list-group-item" ><span class="glyphicon glyphicon-ok"></span><span class="sf">DbToExcel</span></a>
+					</div>
+				</div>
+				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
+				<div class="contents-right col-sm-10 col-md-10">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active">
+							<a style="color: black;" href="#conversion" data-toggle="tab">进制转换</a>
+						</li>
+						
+						<li class="visible-xs dropdown">
+							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+								小工具<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						            <li><a role="menuitem" tabindex="-1" href="#">进制转换</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="dbToExcel.html">DbToExcel</a></li>
+						    </ul>
+						</li>
+					</ul>
+					<!--进制转换的面板-->
+					<div class="tab-content">
+						<div  class="tab-pane fade in active" id="conversion">
+							<div class="panel panel-default">
+								<div class="panel-body row">
+									<div class="col-md-7 conversion_panel">
+										<!--输入框组-->
+										<div class="input-group">
+									        <span class="input-group-addon">二进制</span>
+							                <input id="two" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input  type="button" class="btn btn-info" value="转换" onclick="conversion(two.value,'2')">
+							                </span>										        
+								        </div>
+								        <br />
+								        <div class="input-group">
+									        <span class="input-group-addon">八进制</span>
+							                <input id="eight" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input type="button" class="btn btn-info" value="转换" onclick="conversion(eight.value,'8')">
+							                </span>
+								        </div>
+								        <br />
+								        <div class="input-group">
+									        <span class="input-group-addon">十进制</span>
+							                <input id="ten" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input type="button" class="btn btn-info" value="转换" onclick="conversion(ten.value,'10')">
+							                </span>
+								        </div>
+								        <br />
+								        <div class="input-group">
+									        <span class="input-group-addon">十六进制</span>
+							                <input id="sixteen" type="text" class="form-control">
+								            <span class="input-group-btn">
+								                <input type="button" class="btn btn-info" value="转换" onclick="conversion(sixteen.value,'16')">
+							                </span>
+								        </div>
+								        <br />
+								        <br />
+								    </div>
+								    <div class="col-lg-5
+								    	
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="container bottom">
+				<div class="row">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+	</body>
+</html>
+
+
+</html>

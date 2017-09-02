@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>时间效率</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
+	</head>
+	<body>
+		<!--导航栏--->
+			<nav class="navbr navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-h">
+							<span class="sr-only">切换导航</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">小工具使用平台</a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-h">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="insertSort.html">排序算法</a></li>
+									<li class="divider"></li>
+									<li><a href="../search/seqSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">分治法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">动态规划法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">贪心算法</a></li>-->
+								</ul>
+							</li>
+							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
+							<li><a href="../link/link.html">链接</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		<!--内容-->
+		<div class="container">
+			<div id="contents"  class="row" style="margin-top: 100px;">
+				<!--左边导航栏-->
+				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
+					<div class="contents-left panel-group" id="accordion">
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden;">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion" data-target="#a1"><span class="glyphicon glyphicon-plus"></span><span class="sf">插入排序</span></a>
+						    <div id="a1" class="collapse">
+						    	<a href="insertSort.html" class="list-group-item"><span class="sf">直接插入排序</span></a>
+						   	    <a href="insertSort1.html" class="list-group-item"><span class="sf">折半插入排序</span></a>
+						   	    <a href="shellSort.html" class="list-group-item"><span class="sf">希尔排序</span></a>
+						    </div>
+					    </div>
+					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a2"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
+							<div id="a2" class="collapse">
+								<a href="bubbleSort.html" class="list-group-item"><span class="sf">冒泡排序</span></a>
+						   	    <a href="quickSort.html" class="list-group-item"><span class="sf">快速排序</span></a>
+							</div>
+						</div>
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a3"><span class="glyphicon glyphicon-plus"></span><span class="sf">选择排序</span></a>
+							<div id="a3" class="collapse">
+								<a href="selectSort.html" class="list-group-item"><span class="sf">直接选择排序</span></a>
+						   	    <a href="heapSort.html" class="list-group-item"><span class="sf">堆排序</span></a>
+							</div>
+						</div>
+						<a href="mergeSort.html" class="list-group-item"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
+						<a href="radixSort.html" class="list-group-item" ><span class="glyphicon glyphicon-ok"></span><span class="sf">基数排序</span></a>
+					</div>
+				</div>
+				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
+				<div class="contents-right col-sm-10 col-md-10">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="visible-xs dropdown">
+							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+								排序<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						            <li class="dropdown-header">插入排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort.html">直接插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort1.html">折半插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="shellSort.html">希尔排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">交换排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="bubbleSort.html">冒泡排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="quickSort.html">快速排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">选择排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="selectSort.html">直接选择排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="heapSort.html">堆排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="mergeSort.html">归并排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="radixSort.html">基数排序</a></li>
+						    </ul>
+						</li>
+						<li class="active"><a style="color: black;" href="#test" data-toggle="tab">时间效率测试</a></li>
+					</ul>
+					<!--标签页-->
+					<div id="myTabContent" class="tab-content">
+						<!--排序算法说明标签页-->
+						<div class="tab-pane fade" id="bubbleSort">
+							<div class="panel panel-default">
+								<div class="panel-heading"><h4>说明</h4></div>
+							</div>
+							
+							
+						</div>
+						<!--时间效率测试标签页-->
+						<br/>
+						<div class="tab-pane fade in active" id="test">
+							<div class="panel panel-default">
+								<div class="panel-heading">在"生成"按钮前的输入框输入要生成的随机数的位数（小于100000），再点击生成按钮即可生成待排序随机数;生成后点击排序即可。</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<textarea id="randomNum" class="form-control" rows="8" readonly="readonly"></textarea>
+								</div>
+								<div class="col-md-4 ">
+									<br  />
+										<div class="input-group input-group-sm">
+									            <input id="input_num" type="text" class="form-control">
+									            <span class="input-group-btn">
+									            	 <button id="generate" class="btn btn-info" type="submit">生成</button> 
+									            </span>
+								        </div>
+							        <br/>
+							        <div style="text-align:right;" class="dropdown">
+							        <span id="time" style="text-align:center;margin-right:30px;"></span>
+							           <button type="button" id="orderButton"  class="btn btn-info btn-sm dropdown-toggle orderButtonC" data-toggle="dropdown">排序<span class="caret"></span></button>
+								       <ul class="dropdown-menu pull-right list_ul_li_a" role="menu"> 
+									        <li onclick="toSort('insert')"><a>直接插入排序</a></li>
+										    <li onclick="toSort('insert1')"><a>折半插入排序</a></li>
+										    <li onclick="toSort('shell')"><a>希尔排序</a></li>
+										    <li onclick="toSort('bubble')"><a>冒泡排序</a></li>
+										    <li onclick="toSort('quick')"><a>快速排序</a></li>
+										    <li onclick="toSort('select')"><a>直接选择排序</a></li>
+										    <li onclick="toSort('heap')"><a>堆排序</a></li>
+										    <li onclick="toSort('merge')"><a>归并排序</a></li>
+										    <!-- <li onclick="toSort('radix')"><a>基数排序</a></li> -->
+									    </ul>
+							        </div>
+									<br />
+								</div>
+								<div class="col-md-4">
+									<textarea id="bubbleSor" class="form-control" rows="8" readonly="readonly"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="container bottom">
+				<div class="row">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+		<script type="text/javascript"> 
+		function toSort(s)
+		{
+			var num=$("#input_num").val();
+			var randomNumber=$("#randomNum").val();//获取生成的随机数
+			if(randomNumber != ""){
+				$("#time").html("<span style='color:red;'>排序中，请稍等...</span>");
+				//点击排序后隐藏排序按钮
+				$("#orderButton").addClass("orderButtonC");
+				var type=s;
+				var num1=document.getElementById("input_num").value;//获取输入框的值
+				//alert(num1+""+s);
+			    var xmlhttp;
+				if (window.XMLHttpRequest)
+					  {
+					    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+					    xmlhttp=new XMLHttpRequest();
+					  }
+					  else
+					  {
+					    // IE6, IE5 浏览器执行代码
+					    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					  }
+					  xmlhttp.onreadystatechange=function()
+					  {
+					    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+					      var data=xmlhttp.responseText;
+					     // alert(data);
+					      var datasplit = data.split(",");
+					      
+					      $("#bubbleSor").text(datasplit[0]);//排序结果
+				          $("#time").text(datasplit[1]);//排序时间
+					    }
+					  }
+					  xmlhttp.open("POST","../Time_efficiency",true);
+					  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			          xmlhttp.send("input_num1="+num1+"&type="+s+"&order=order&randomNumber="+randomNumber);
+			}else{
+		    	 $("#randomNum").text("");
+		    	 $("#time").text("");
+		    	 $("#orderButton").addClass("orderButtonC");
+		    	 $("#bubbleSor").text("");
+		    }
+			
+			}
+		 
+		//生成随机数
+		$(document).ready(function(){
+			$("#generate").click(function(){
+				var num=$("#input_num").val();
+				var reg = /^\d+$/;//仅允许数字
+				if(num != "" && (reg.test(num)==true) && num>0 && num<=99999){
+			    	$.post("../Time_efficiency",
+			    			
+			    			
+				   {
+						 input_num:num
+			       },
+     		       function(data,status){
+			           //alert("数据: \n" + data + "\n状态: " + status); 
+				   	   if(data == "false"){
+			           		$("#input_num").addClass("red");
+				       }else{
+						       $("#randomNum").text(data);
+						       //如果服务端返回了数据并且输入框不为空则设置排序按钮出现，并隐藏之前排序时间
+						       $("#orderButton").removeClass("orderButtonC");
+						       $("#time").text("");
+						       $("#bubbleSor").text("");
+					   }
+				    });
+			    }else{
+			    	 $("#randomNum").text("");
+			    	 $("#time").text("");
+			    	 $("#orderButton").addClass("orderButtonC");
+			    	 $("#bubbleSor").text("");
+			    }
+			});
+		}); 
+		//监测输入框数据，输入数据不符合要求的话输入框产生相应变化
+		$(document).ready(function(){
+			var reg = /^\d+$/;
+			$("#input_num").mouseleave(function(){
+				var num = $("#input_num").val();
+				/* alert(reg.test(num)+" "+num.length); */
+			    if((num<=0 || num>99999 || (reg.test(num)==false)) && num.length!=''){
+			    	$("#input_num").addClass("red");
+			    }else{
+			    	$("#input_num").removeClass("red");
+			    }
+			});
+		});
+		</script>
+	</body>
+</html>
+

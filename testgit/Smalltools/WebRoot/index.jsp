@@ -226,7 +226,7 @@ void BubbleSort1(RecType R[],int n)
 			$("#generate").click(function(){
 				var num=$("#input_num").val();
 			    if(num != ""){
-			    	$.post("Time_efficiency",
+			    	$.post("../Time_efficiency",
 			    			
 			    			
 				   {

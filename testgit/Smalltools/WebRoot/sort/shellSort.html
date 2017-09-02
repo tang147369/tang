@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>希尔排序</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/main.js" ></script>
+	</head>
+	<body>
+		<!--导航栏--->
+			<nav class="navbr navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-h">
+							<span class="sr-only">切换导航</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">小工具使用平台</a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-h">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">算法简介
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="insertSort.html">排序算法</a></li>
+									<li class="divider"></li>
+									<li><a href="../search/seqSearch.html">查找算法</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">分治法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">动态规划法</a></li>
+									<li class="divider"></li>
+									<li><a href="#">贪心算法</a></li>-->
+								</ul>
+							</li>
+							<li><a href="../tools/hexadecimalConversion.html">小工具</a></li>
+							<li><a href="../link/link.html">链接</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		<!--内容-->
+		<div class="container">
+			<div id="contents"  class="row" style="margin-top: 100px;">
+				<!--左边导航栏-->
+				<div class="contents-left-main hidden-xs  col-sm-2 col-md-2 " id="contents-left-m">
+					<div class="contents-left panel-group" id="accordion">
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden;">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion" data-target="#a1"><span class="glyphicon glyphicon-plus"></span><span class="sf">插入排序</span></a>
+						    <div id="a1" class="collapse">
+						    	<a href="insertSort.html" class="list-group-item"><span class="sf">直接插入排序</span></a>
+						   	    <a href="insertSort1.html" class="list-group-item"><span class="sf">折半插入排序</span></a>
+						   	    <a href="#" class="list-group-item"><span class="sf">希尔排序</span></a>
+						    </div>
+					    </div>
+					    <div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a2"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
+							<div id="a2" class="collapse">
+								<a href="bubbleSort.html" class="list-group-item"><span class="sf">冒泡排序</span></a>
+						   	    <a href="quickSort.html" class="list-group-item"><span class="sf">快速排序</span></a>
+							</div>
+						</div>
+						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
+							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a3"><span class="glyphicon glyphicon-plus"></span><span class="sf">选择排序</span></a>
+							<div id="a3" class="collapse">
+								<a href="selectSort.html" class="list-group-item"><span class="sf">直接选择排序</span></a>
+						   	    <a href="heapSort.html" class="list-group-item"><span class="sf">堆排序</span></a>
+							</div>
+						</div>
+						<a href="mergeSort.html" class="list-group-item"><span class="glyphicon glyphicon-okglyphicon glyphicon-ok"></span><span class="sf">归并排序</span></a>
+						<a href="radixSort.html" class="list-group-item"><span class="glyphicon glyphicon-ok"></span><span class="sf">基数排序</span></a>
+					</div>
+				</div>
+				<!--右边内容 tab-pane后面加fade有淡入淡出的效果 in类显示初始内容-->
+				<div class="contents-right col-sm-10 col-md-10">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active">
+							<a style="color: black;" href="#bubbleSort" data-toggle="tab">希尔排序</a>
+						</li>
+						<li class="visible-xs dropdown">
+							<a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+								排序<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						            <li class="dropdown-header">插入排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort.html">直接插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="insertSort1.html">折半插入排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="#">希尔排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">交换排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="bubbleSort.html">冒泡排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="quickSort.html">快速排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li class="dropdown-header">选择排序</li>
+						            <li><a role="menuitem" tabindex="-1" href="selectSort.html">直接选择排序</a></li>
+						            <li><a role="menuitem" tabindex="-1" href="heapSort.html">堆排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="mergeSort.html">归并排序</a></li>
+						            <li role="presentation" class="divider"></li>
+						            <li><a role="menuitem" tabindex="-1" href="radixSort.html">基数排序</a></li>
+						    </ul>
+						</li>
+						<li><a style="color: black;" href="timeEfficiencyTest.html">时间效率测试</a></li>
+					</ul>
+					<!--标签页-->
+					<div id="myTabContent" class="tab-content">
+						<!--排序算法说明标签页-->
+						<div class="tab-pane fade in active" id="bubbleSort">
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h4>希尔排序</h4></div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">1.排序思路</div>
+								<div class="panel-body">
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;希尔排序实际上是一种分组插入方法。其基本思想是：先去一个小于n的整数d1作为
+										第一个增量，把表的全部元素分成d<sub>1</sub>个组，所有相互之间距离为d1的倍数的元素放在同一个组中，在各组内进行直接插入排序；
+										然后，取第二个增量d<sub>2</sub>（&lt;d<sub>1</sub>），重复上诉的分组和排序过程，直至所取得增量d<sub>t</sub>=1(d<sub>t</sub>&lt;d<sub>t-1</sub>&lt;...&lt;d<sub>2</sub>&lt;d<sub>1</sub>)
+									</p>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">2.排序算法</div>
+							</div>
+							<div>
+								<p>取d<sub>1</sub>=n/2,d<sub>i+1</sub>=&lfloor;d<sub>i</sub>/2&rfloor;时希尔排序算法如下：</p>
+<pre>void ShellSort(RecType R[],int n)	  //希尔排序算法
+{
+  int i,j,gap;
+  RecType tmp;
+  gap=n/2;	  //增量初始值
+  while(gap>0)
+  {
+    for(i=gap;i&lt;n;i++)	  //对所有相隔gap位置的元素组采用直接插入排序
+    {
+      tmp=R[i];
+      j=i-gap;
+      while(j>=0 && tmp.key&lt;R[j].key)	  对相隔gap位置的元素进行排序
+      {
+        R[j+gap]=R[j];
+        j=j-gap;
+      }
+      gap=gap/2;	  //减小增量
+    }
+  }
+}
+
+								</pre>
+							</div>
+							<div>
+								<p><b>例题：</b>设待排序的表有10个元素，其关键字为{9,8,7,6,5,4,3,2,1,0}.说明采用希尔排序方法进行排序的过程<span class="h-span" data-toggle="collapse" data-target="#insertSt"><b>查看解析</b></span></p>
+								<div class="panel panel-default collapse" id="insertSt" style="background: rgb(245,245,245);">
+									<div class="panel-body">
+										<P>&nbsp;&nbsp;&nbsp;&nbsp;解：其排序过程如下所示。第一躺排序时，d=5,整个表分成5组：(9,4),(8,3),(7,2),(6,1),(5,0)，各组采用直接插入排序方法变成有序的，
+											即结果分别为(4,9),(3,8),(2,7),(1,6),(0,5)，最终结果为(4,3,2,1,0,9,8,7,6,5)。<br />
+											&nbsp;&nbsp;&nbsp;&nbsp;第二趟排序时，d=2，整个表分成两组：(4,2,0,8,6)和(3,1,9,7,5)。第三趟排序时，d=1，整个表为一组，采用直接插入方法使整个数列有序，最终
+											结果为(0,1,2,3,4,5,6,7,8,9)。
+										</P>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--时间效率测试标签页-->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="container bottom">
+				<div class="row">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+	</body>
+</html>
+
+
+</html>
