@@ -9,7 +9,7 @@ public class DbEntity {
         }
     }
     public Object get(int j) {
-    	System.out.println("col:"+col[j]);
+    	//System.out.println("col:"+col[j]);
         return col[j];
     }
 }

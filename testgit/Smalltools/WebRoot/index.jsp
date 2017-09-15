@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 	<head>
+	    <base href="<%=basePath%>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,6 +74,8 @@
 						   	    <a href="#" class="list-group-item"><span class="sf">快速排序</span></a>
 							</div>
 						</div>
+						<% out.print(path); %>
+						<% out.print(basePath); %>
 						<div class="panel panel-default" style="margin-top:0px;border-top:hidden;border-bottom:hidden">
 							<a href="#" class="list-group-item" data-toggle="collapse" data-parent="#accordion"  data-target="#a3"><span class="glyphicon glyphicon-plus"></span><span class="sf">交换排序</span></a>
 							<div id="a3" class="collapse">

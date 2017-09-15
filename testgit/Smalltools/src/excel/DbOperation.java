@@ -92,7 +92,7 @@ public class DbOperation {
 			pst.setString(2, dbName[1]);
 			resName = pst.executeQuery();//执行sql语句
 			while(resName.next()){
-				System.out.println("列名："+resName.getString(1));
+				//System.out.println("列名："+resName.getString(1));
 				colName.add(resName.getString(1));//保存列名
 			}
 		} catch (SQLException e) {

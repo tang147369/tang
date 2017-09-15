@@ -99,12 +99,38 @@ function choooseImg(){
 function btnToSub(){
 	var dbUrl = document.getElementById("dbUrlId").value;
 	var user = document.getElementById("userId").value;
-	var pwd = document.getElementById("pwdId").value;
+	//对pwd中的特殊字符进行编码
+	var pwd = encodeURIComponent(document.getElementById("pwdId").value);
 	var dbName = document.getElementById("dbNameId").value;
 	var table = document.getElementById("tableId").value;
 	//alert(dbUrl+" "+user+" "+pwd+" "+dbName+" "+table);
 	if(dbUrl!="" && user!="" && pwd!="" && dbName!="" && table!=""){
-		document.getElementById("dbToExcelSub").type="submit";
+		var xmlhttp;
+		  if (window.XMLHttpRequest)
+		  {
+		    // IE7+, Firefox, Chrome, Opera, Safari 锟斤拷锟斤拷锟街达拷写锟斤拷锟�
+		    xmlhttp=new XMLHttpRequest();
+		  }
+		  else
+		  {
+		    // IE6, IE5 锟斤拷锟斤拷锟街达拷写锟斤拷锟�
+		    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  xmlhttp.onreadystatechange=function()
+		  {
+		    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+		      var s=xmlhttp.responseText;
+		      if(s==true){
+		    	  document.getElementById("dbToExcelSub").type="submit";
+		      }else{
+		    	  alert("请检查您的输入！");
+		      }
+		    }
+		  }
+		  xmlhttp.open("POST","../Tools",true);
+		  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		  xmlhttp.send("testDbUrl="+dbUrl+"&testUser="+user+"&testPwd="+pwd+"&testDbName="+dbName+"&testTable="+table);
 	}else{
 		alert("输入不能为空！");
 	}
