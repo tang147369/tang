@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,12 +48,6 @@ public class Tools extends HttpServlet {
 		String toolName = request.getParameter("toolName");//工具的名称
 		String num = request.getParameter("num");//需要转化的进制数
 		String type = request.getParameter("type");//进制的类型
-		//ajax检查输入是否正确
-		String testUrl = request.getParameter("testDbUrl");//数据库地址和端口
-	    String testUser = request.getParameter("testUser");//用户名
-		String testPwd = request.getParameter("testPwd");//数据库密码
-        String testDbName = request.getParameter("testDbName");//数据库名
-        String testTableName = request.getParameter("testTable");//表名
 		//导出数据库的表
 		String url = request.getParameter("dbUrl");//数据库地址和端口
 		String user = request.getParameter("user");//用户名
@@ -66,22 +61,21 @@ public class Tools extends HttpServlet {
 			StringBuffer s = new HexadecimalConversion().conversion(num,Integer.parseInt(type));
 			out.println(s);
 		}
-		else if(testUrl!=null && !testUrl.equals("") && testUser!=null && !testUser.equals("") && testPwd!=null && !testPwd.equals("") && testDbName!=null && !testDbName.equals("") && testTableName!=null && !testTableName.equals("")){
-			out.print(new IsDbExists(testUrl+"/"+testDbName, testUser, testPwd, testTableName).isExists());
-			System.out.println("judge:"+testUrl+" "+testDbName+" "+testUser+" "+testPwd+" "+testTableName);
-		}
-		//数据库表导出工具
 		else if(toolName!=null && toolName.equals("downloadExcel")){
 			//输入不为空
 			if(url!=null && !url.equals("") && user!=null && !user.equals("") && pwd!=null && !pwd.equals("") && dbName!=null && !dbName.equals("") && tableName!=null && !tableName.equals("")){
+				System.out.println("t1");
 				//判断用户输入连接数据库表是否成功
-				if(new IsDbExists(url+"/"+dbName, user, pwd, tableName).isExists()){
+				Boolean fl = new IsDbExists(url+"/"+dbName, user, pwd, tableName).isExists();
+				//System.out.println("fl:"+fl);
+				if(fl=true){
 					new DbToExcel(url+"/"+dbName, user, pwd, tableName);//调用数据库导出Excel方法
 					/*将文件流返回客户端服务器*/
-					String path = "C://Users/Administrator/Desktop/root/file/"+tableName+".xls";
+					String path = "/root/file/"+tableName+".xls";
 					File file = new File(path);// path是根据路径和文件名
-					//判断文件是否存在
-				    if(file.exists()){
+					//判断文件是否存在,并且是刚刚创建的
+				    if(file.exists() && (System.currentTimeMillis()-file.lastModified())<1000){
+				    	System.out.println("t2");
 				    	 String filename = file.getName();// 获取文件名称
 						    InputStream fis = new BufferedInputStream(new FileInputStream(path));
 						    byte[] buffer = new byte[fis.available()];
@@ -98,11 +92,12 @@ public class Tools extends HttpServlet {
 						    os.close();
 				    }
 				    else{
-				    	System.out.println("失败");
+				    	//System.out.println("无法连接");
+				    	response.sendRedirect("tools/dbToExcel.html");
 				    }
 				}
 			}else{
-				out.print("<script>输入不能为空！</script>");
+				response.sendRedirect("tools/dbToExcel.html");
 			}
 		}
 		out.flush();

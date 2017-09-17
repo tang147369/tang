@@ -20,7 +20,7 @@ public class DbToExcel {
      	   WritableWorkbook wwb = null;
           
             // 创建可写入的Excel工作簿
-            String fileName = "C://Users/Administrator/Desktop/root/file/"+tableName+".xls";
+            String fileName = "/root/file/"+tableName+".xls";
             File file=new File(fileName);
             if (!file.exists()) {
                 file.createNewFile();

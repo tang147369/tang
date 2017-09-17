@@ -26,7 +26,7 @@ public class IsDbExists {
 			stat = con.prepareStatement("select * from "+tableName);
 			res = stat.executeQuery();
 			while(res.next()){
-				flag=true;
+				flag=true;//连接成功且表存在
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -44,8 +44,9 @@ public class IsDbExists {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally{
+			return flag;
 		}
-		return flag;
 	}
 	/*public static void main(String args[]){
 		System.out.println(new IsDbExists("localhost:3308/test", "root1", "_a147369852_b123+c", "goods").isExists());
