@@ -1,0 +1,131 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (javaClasses.cpp:136), pid=10220, tid=3492
+#  fatal error: Invalid layout of preloaded class
+#
+# JRE version:  (7.0_45-b18) (build )
+# Java VM: Java HotSpot(TM) Client VM (24.45-b08 mixed mode windows-x86 )
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x02b2c400):  JavaThread "Unknown thread" [_thread_in_vm, id=3492, stack(0x00990000,0x009e0000)]
+
+Stack: [0x00990000,0x009e0000],  sp=0x009df318,  free space=316k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x18df51]
+V  [jvm.dll+0x187cc6]
+V  [jvm.dll+0x3586a]
+V  [jvm.dll+0x358f6]
+V  [jvm.dll+0x4400d]
+V  [jvm.dll+0x442be]
+V  [jvm.dll+0x9263a]
+V  [jvm.dll+0x929eb]
+V  [jvm.dll+0x13daf1]
+V  [jvm.dll+0x1605fc]
+V  [jvm.dll+0xc8ebf]
+C  [javaw.exe+0x13ce]
+C  [javaw.exe+0x1e40]
+C  [javaw.exe+0xa5b1]
+C  [javaw.exe+0xa63b]
+C  [KERNEL32.DLL+0x138f4]
+C  [ntdll.dll+0x65de3]
+C  [ntdll.dll+0x65dae]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x02b2c400 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=3492, stack(0x00990000,0x009e0000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.016 loading class 0x029db4f0 done
+Event: 0.017 loading class 0x029daf80 done
+Event: 0.017 loading class 0x029daf60
+Event: 0.017 loading class 0x029e2288
+Event: 0.017 loading class 0x029e2288 done
+Event: 0.017 loading class 0x029e22b8
+Event: 0.017 loading class 0x029e22b8 done
+Event: 0.017 loading class 0x029e22e8
+Event: 0.017 loading class 0x029e22e8 done
+Event: 0.017 loading class 0x029daf60 done
+
+
+Dynamic libraries:
+0x00920000 - 0x0094f000 	F:\xunlei\android\myeclipse\binary\com.sun.java.jdk7.win32.x86_1.7.0.u45\bin\javaw.exe
+0x77b80000 - 0x77cfb000 	C:\windows\SYSTEM32\ntdll.dll
+0x74d20000 - 0x74e00000 	C:\windows\SYSTEM32\KERNEL32.DLL
+0x752a0000 - 0x7541e000 	C:\windows\SYSTEM32\KERNELBASE.dll
+0x751c0000 - 0x7523b000 	C:\windows\SYSTEM32\ADVAPI32.dll
+0x75100000 - 0x751be000 	C:\windows\SYSTEM32\msvcrt.dll
+0x74e00000 - 0x74e44000 	C:\windows\SYSTEM32\sechost.dll
+0x75420000 - 0x754cd000 	C:\windows\SYSTEM32\RPCRT4.dll
+0x748b0000 - 0x748ce000 	C:\windows\SYSTEM32\SspiCli.dll
+0x748a0000 - 0x748aa000 	C:\windows\SYSTEM32\CRYPTBASE.dll
+0x75c80000 - 0x75cd8000 	C:\windows\SYSTEM32\bcryptPrimitives.dll
+0x75540000 - 0x75687000 	C:\windows\SYSTEM32\USER32.dll
+0x74a90000 - 0x74bdf000 	C:\windows\SYSTEM32\GDI32.dll
+0x71080000 - 0x7128f000 	C:\windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.10586.0_none_d3c2e4e965da4528\COMCTL32.dll
+0x748d0000 - 0x74a8d000 	C:\windows\SYSTEM32\combase.dll
+0x750d0000 - 0x750fb000 	C:\windows\SYSTEM32\IMM32.DLL
+0x518c0000 - 0x5197f000 	F:\xunlei\android\myeclipse\binary\com.sun.java.jdk7.win32.x86_1.7.0.u45\jre\bin\msvcr100.dll
+0x51de0000 - 0x52160000 	F:\xunlei\android\myeclipse\binary\com.sun.java.jdk7.win32.x86_1.7.0.u45\jre\bin\client\jvm.dll
+0x771a0000 - 0x771a6000 	C:\windows\SYSTEM32\PSAPI.DLL
+0x72580000 - 0x72588000 	C:\windows\SYSTEM32\WSOCK32.dll
+0x74470000 - 0x74494000 	C:\windows\SYSTEM32\WINMM.dll
+0x754d0000 - 0x7552f000 	C:\windows\SYSTEM32\WS2_32.dll
+0x00f70000 - 0x00f93000 	C:\windows\SYSTEM32\WINMMBASE.dll
+0x74be0000 - 0x74c17000 	C:\windows\SYSTEM32\cfgmgr32.dll
+0x72570000 - 0x7257c000 	F:\xunlei\android\myeclipse\binary\com.sun.java.jdk7.win32.x86_1.7.0.u45\jre\bin\verify.dll
+0x72550000 - 0x72570000 	F:\xunlei\android\myeclipse\binary\com.sun.java.jdk7.win32.x86_1.7.0.u45\jre\bin\java.dll
+0x5a5e0000 - 0x5a5f3000 	F:\xunlei\android\myeclipse\binary\com.sun.java.jdk7.win32.x86_1.7.0.u45\jre\bin\zip.dll
+0x72c00000 - 0x72d3f000 	C:\windows\SYSTEM32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=GBK -Xbootclasspath:F:\xunlei\android\sdk\sdk\platforms\android-19\android.jar 
+java_command: com.onlinetest.SaveChoAnswer
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+CLASSPATH=C:\Program Files (x86)\Java\jdk1.8.0_112\jre\lib\rt.jar;
+PATH=F:/xunlei/android/myeclipse/binary/com.sun.java.jdk7.win32.x86_1.7.0.u45/jre/bin/client;F:/xunlei/android/myeclipse/binary/com.sun.java.jdk7.win32.x86_1.7.0.u45/jre/bin;F:/xunlei/android/myeclipse/binary/com.sun.java.jdk7.win32.x86_1.7.0.u45/jre/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Java\jdk1.8.0_112\lib\tools.jar;C:\Program Files (x86)\Java\jre1.8.0_112\bin;F:\xunlei\android\sdk\sdk\tools;F:\xunlei\android\t8\bin;D:\wamp\bin\mysql\mysql5.7.11\bin;F:\javaRes\Git\cmd;C:\Program Files (x86)\NCREÉÏ~1\¶þ¼¶JA~1\OCXDLL\;F:\javaRes\apache-maven-3.5.0\bin;E:\MongoDB\bin;F:\javaRes\;C:\Program Files (x86)\Java\jdk1.8.0_112\bin£ºF:\Microsoft Visual Studio\MyProjects\JNIDemo\Debug
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 69 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8 , 64 bit Build 9200 
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 69 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, erms, ht, tsc, tscinvbit
+
+Memory: 4k page, physical 4095972k(1045912k free), swap 6717412k(1398212k free)
+
+vm_info: Java HotSpot(TM) Client VM (24.45-b08) for windows-x86 JRE (1.7.0_45-b18), built on Oct  8 2013 06:02:43 by "java_re" with unknown MS VC++:1600
+
+time: Sun Dec 03 19:04:49 2017
+elapsed time: 0 seconds
+

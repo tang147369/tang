@@ -1,0 +1,180 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:padding="10px"
+    >
+	
+     <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20px"
+        >
+         <LinearLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent" 
+	            android:layout_weight="1"
+	         >
+	            <TextView
+	            android:id="@+id/textView51"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28px"
+	            android:text="个人信息" 
+	            />
+
+	        </LinearLayout>
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="20px"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_weight="1"
+            >
+			 <TextView
+	            android:id="@+id/textView1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="姓名：" 
+	            android:textSize="28px"
+	            />
+	        <TextView
+	            android:id="@+id/textViewName"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28px"
+	            />    
+        </LinearLayout>
+
+    </TableRow>
+	
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20px"
+        >
+         <LinearLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent" 
+	            android:layout_weight="1"
+	         >
+	            <TextView
+	            android:id="@+id/textView41"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28px"
+	            android:text="学号：" 
+	            />
+	        	<TextView
+	            android:id="@+id/textViewStuNum"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28px"
+	            />
+
+	        </LinearLayout>
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="20px"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+	        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学院：" 
+            android:textSize="28px"
+            />
+
+	        <TextView
+            android:id="@+id/textViewCollege"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28px"
+            />
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="20px"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+	        <TextView
+	            android:id="@+id/textView31"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="专业班级：" 
+	            android:textSize="28px"
+            />
+			<TextView
+	            android:id="@+id/textViewMajorClass"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28px"
+	            />
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30px"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+       		 <TextView
+	            android:id="@+id/textView61"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28px"
+	            android:text="当前测试科目：" />
+       		 <TextView
+	            android:id="@+id/testCourse"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28px"
+	            />
+       	</LinearLayout>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+		<LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" >
+	        <Button
+	            android:id="@+id/start"
+	            android:layout_width="200px"
+	            android:layout_height="wrap_content"
+	            android:text="开始" />
+		</LinearLayout>
+    </TableRow>
+
+</TableLayout>
